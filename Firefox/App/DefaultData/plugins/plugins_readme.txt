@@ -1,0 +1,1 @@
+Place Firefox plugins in this directory (Flash, Shockwave, etc)
