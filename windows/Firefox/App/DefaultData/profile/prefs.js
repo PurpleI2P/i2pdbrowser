@@ -31,6 +31,7 @@ user_pref("datareporting.sessions.current.clean", true);
 user_pref("extensions.autoDisableScopes", 0);
 user_pref("general.warnOnAboutConfig", false);
 user_pref("geo.enabled", false);
+user_pref("intl.locale.matchOS", true);
 user_pref("keyword.enabled", false);
 user_pref("media.eme.enabled", false);
 user_pref("media.gmp-eme-adobe.enabled", false);
