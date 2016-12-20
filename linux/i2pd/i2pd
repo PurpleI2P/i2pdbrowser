@@ -1,0 +1,10 @@
+#!/bin/sh
+arch=$(uname -m)
+
+if [ $arch == "x86_64" ]
+	screen -Adm -S i2pd ./i2pd-x86_64 --datadir=.
+else
+	screen -Adm -S i2pd ./i2pd-i386 --datadir=.
+fi
+
+
