@@ -17,7 +17,7 @@ url="http://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$lang
 #file=firefox-32.0a2.en-US.linux-i686.tar.bz2
 #url=http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora/$file
 
-dir="$application-portable-$version"
+dir="$application-portable"
 mkdir "$dir"
 cd "$dir"
 echo "Downloading $application..."
@@ -42,7 +42,8 @@ echo "Downloading NoScript extension..."
 wget -q https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi?src=search -O app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 
 echo "Adding standart configs..."
-cp ../configs/* data/
+mv ../configs/* data/
+rm -rf ../configs
 
 echo '#!/bin/sh' > "${application}-portable"
 echo 'dir=${0%/*}' >> "${application}-portable"
@@ -54,9 +55,4 @@ echo './firefox -profile ../data' >> "${application}-portable"
 
 chmod +x "$application-portable"
 echo ... finished
-echo "#close all running instances of another $application version:"
-echo killall $application
-echo "#change into the directory"
-echo "# and start the application there"
-echo cd "$dir"
-echo ./"$application-portable"
+rm ../$0
