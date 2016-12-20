@@ -1,21 +1,13 @@
 #!/bin/sh
 arch=$(uname -m)
-
-# Configure the following default variables according to your requirements
-#language="en-US" # e.g. "de" or "en-US" # We will detect language from system!
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-# default if no argument is set:
-version="45.6.0esr" # chose from http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/
+version="45.6.0esr"
 application="firefox"
 
 echo "This script prepearing $application $version for use with I2Pd"
-#read -n1 -r -p "Press space to continue..." key
 
 file="$application-$version.tar.bz2"
-url="http://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
-# or example for firefox nightly:
-#file=firefox-32.0a2.en-US.linux-i686.tar.bz2
-#url=http://download.cdn.mozilla.net/pub/mozilla.org/firefox/nightly/latest-mozilla-aurora/$file
+url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
 
 dir="$application-portable"
 mkdir "$dir"
@@ -25,7 +17,7 @@ wget -q $url
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
-	url="http://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
+	url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
 	wget -q $url
 fi
 if [ ! -f $file ]; then
