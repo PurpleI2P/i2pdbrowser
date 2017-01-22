@@ -15,8 +15,11 @@ REM BFCPEVERDESC=I2Pd Browser
 REM BFCPEVERCOMPANY=PurpleI2P
 REM BFCPEVERCOPYRIGHT=Copyright © 2013-2016 PurpleI2P Project
 REM BFCPEOPTIONEND
-@ECHO ON
-@echo off
+
+REM Copyright (c) 2013-2017, The PurpleI2P Project
+REM This file is part of Purple i2pd project and licensed under BSD3
+REM See full license text in LICENSE file at top of project tree
+
 title Starting I2Pd Browser
 set $pause=ping.exe 0.0.0.0 -n
 ver| find "6." >nul && set $pause=timeout.exe /t
