@@ -1,4 +1,11 @@
 #!/bin/sh
+
+# Copyright (c) 2013-2017, The PurpleI2P Project
+#
+# This file is part of Purple i2pd project and licensed under BSD3
+#
+# See full license text in LICENSE file at top of project tree
+
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
 version="45.6.0esr"
