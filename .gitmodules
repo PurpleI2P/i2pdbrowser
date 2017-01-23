@@ -1,3 +1,0 @@
-[submodule "windows/build/i2pd"]
-	path = windows/build/i2pd
-	url = https://github.com/purplei2p/i2pd.git

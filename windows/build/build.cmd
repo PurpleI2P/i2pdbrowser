@@ -70,9 +70,7 @@ if "xOS"=="x86" (
 	7z x -y -o..\i2pd i2pd_2.11.0_win64_mingw.zip > nul
 	del /Q i2pd_2.11.0_win64_mingw.zip
 )
-xcopy /E /I /Y i2pd\contrib\certificates ..\i2pd\certificates > nul
-copy /Y i2pd\docs\i2pd.conf ..\i2pd\ > nul
-copy /Y i2pd\docs\tunnels.conf ..\i2pd\ > nul
+xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo I2Pd Browser portable готов к запуску!
 pause
