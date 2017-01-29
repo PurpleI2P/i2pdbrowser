@@ -47,10 +47,10 @@ rm -rf ../configs
 echo '#!/bin/sh' > "${application}-portable"
 echo 'dir=${0%/*}' >> "${application}-portable"
 echo 'if [ "$dir" = "$0" ]; then' >> "${application}-portable"
-echo ' dir="."' >> "${application}-portable"
+echo '	dir="."' >> "${application}-portable"
 echo 'fi' >> "${application}-portable"
 echo 'cd "$dir/app"' >> "${application}-portable"
-echo './firefox -profile ../data' >> "${application}-portable" 
+echo './firefox -profile ../data -no-remote' >> "${application}-portable" 
 
 chmod +x "$application-portable"
 echo ... finished
