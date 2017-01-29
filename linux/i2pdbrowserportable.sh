@@ -37,6 +37,20 @@ rm $file
 mv $application app
 mkdir data
 
+# Deleting some not needed files
+rm app/crashreporter*
+rm app/removed-files
+rm app/run-mozilla.sh
+rm app/update*
+rm app/browser/blocklist.xml
+rm -r app/dictionaries
+# And edit some places
+sed -i 's/Enabled=1/Enabled=0/g' app/application.ini
+sed -i 's/ServerURL=.*/ServerURL=-/' app/application.ini
+sed -i 's/Enabled=1/Enabled=0/g' app/webapprt/webapprt.ini
+sed -i 's/ServerURL=.*/ServerURL=-/' app/webapprt/webapprt.ini
+# Done!
+
 echo "Downloading NoScript extension..."
 wget -q https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi?src=search -O app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 
