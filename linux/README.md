@@ -11,9 +11,9 @@ What works now
 
 How to use
 -----
-1. Build preconfigured FireFox using script `./i2pdbrowserportable.sh`
+1. Build preconfigured FireFox using script `i2pdbrowserportable.sh` from `build` folder
 2. Run i2pd by executing `./i2pd` from `i2pd` folder
-3. Run FireFox by executing `./firefox-portable` from `firefox-portable` folder
+3. Run FireFox by executing `./firefox-portable`
 
 Additional info
 -----
