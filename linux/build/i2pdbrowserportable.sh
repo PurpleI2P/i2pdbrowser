@@ -11,6 +11,12 @@ language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
 version="45.7.0esr"
 application="firefox"
 
+curlfind=$(find /bin /usr/bin /usr/sbin /usr/local/bin -type f -name curl)
+if [ -z $curlfind ]; then
+	echo "Can't find cURL installed. That script needs it!";
+	exit 1;
+fi
+
 echo "This script prepearing $application $version for use with I2Pd"
 
 file="$application-$version.tar.bz2"
@@ -19,6 +25,7 @@ url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$lan
 echo "Downloading $application..."
 curl -L -f -# -O $url
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
+	echo "I'll try download Firefox with shortener language code";
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
 	url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
