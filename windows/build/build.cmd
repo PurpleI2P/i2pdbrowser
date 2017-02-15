@@ -6,23 +6,34 @@ call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
 
-echo Сборка I2Pd Browser Portable
-echo Системная локаль: %locale%, архитектура: %xOS%
-echo.
-echo Загрузка установщика Firefox Portable ESR
+if "%locale%"=="Russian" (
+	echo Сборка I2Pd Browser Portable
+	echo Системная локаль: %locale%, архитектура: %xOS%
+	echo.
+	echo Загрузка установщика Firefox Portable ESR
+) else (
+	echo Building I2Pd Browser Portable
+	echo System locale: %locale%, architecture: %xOS%
+	echo.
+	echo Downloading Firefox Portable ESR installer
+)
 
-"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%2045.6.0/FirefoxPortableESR_45.6.0_%locale%.paf.exe %$X%
+"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%2045.7.0/FirefoxPortableESR_45.7.0_%locale%.paf.exe %$X%
 if errorlevel 1 (
 	echo ERROR:%ErrorLevel%
 	pause
-	goto :eof
+	exit
 ) else (echo OK!)
 
 echo.
-echo Распаковка установщика и удаление не нужных файлов
+if "%locale%"=="Russian" (
+	echo Распаковка установщика и удаление не нужных файлов
+) else (
+	echo Unpacking the installer and delete unnecessary files
+)
 
-7z x -y -o..\Firefox FirefoxPortableESR_45.6.0_%locale%.paf.exe > nul
-del /Q FirefoxPortableESR_45.6.0_%locale%.paf.exe
+7z x -y -o..\Firefox FirefoxPortableESR_45.7.0_%locale%.paf.exe > nul
+del /Q FirefoxPortableESR_45.7.0_%locale%.paf.exe
 rmdir /S /Q ..\Firefox\$PLUGINSDIR
 rmdir /S /Q ..\Firefox\App\AppInfo
 rmdir /S /Q ..\Firefox\App\Bin
@@ -49,7 +60,11 @@ rem	rmdir /S /Q ..\Firefox\App\Firefox
 	del /Q ..\Firefox\App\Firefox64\update*.*
 rem )
 
-echo Отключение отчетов о падении
+if "%locale%"=="Russian" (
+	echo Отключение отчетов о падении
+) else (
+	echo Disabling crash reports
+)
 rem if "xOS"=="x86" (
 	sed -i "s/Enabled=1/Enabled=0/g" ..\Firefox\App\Firefox\application.ini
 	sed -i "s/ServerURL=.*/ServerURL=-/" ..\Firefox\App\Firefox\application.ini
@@ -62,37 +77,51 @@ rem ) else (
 	sed -i "s/ServerURL=.*/ServerURL=-/" ..\Firefox\App\Firefox64\webapprt\webapprt.ini
 rem )
 
-echo Загрузка дополнения NoScript
-
-"%CURL%" -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
-if errorlevel 1 (echo ERROR:%ErrorLevel% && pause && goto :eof) else (echo OK!)
-if "xOS"=="x86" (
-	move /Y addon-722-latest.xpi ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+if "%locale%"=="Russian" (
+	echo Загрузка дополнения NoScript
 ) else (
-	move /Y addon-722-latest.xpi ..\Firefox\App\Firefox64\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+	echo Downloading NoScript extension
 )
 
+"%CURL%" -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+copy /Y addon-722-latest.xpi ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+copy /Y addon-722-latest.xpi ..\Firefox\App\Firefox64\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+del /Q addon-722-latest.xpi
+
 echo.
-echo Копирование файлов настроек в папку Firefox
+if "%locale%"=="Russian" (
+	echo Копирование файлов настроек в папку Firefox
+) else (
+	echo Copying Firefox settings
+)
 copy /Y profile\* ..\Firefox\App\DefaultData\profile\ > nul
 copy /Y settings\FirefoxPortable.ini ..\Firefox\ > nul
 
-echo Загрузка I2Pd
-if "xOS"=="x86" (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.11.0/i2pd_2.11.0_win32_mingw.zip
-	if errorlevel 1 (echo ERROR:%ErrorLevel%) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.11.0_win32_mingw.zip > nul
-	del /Q i2pd_2.11.0_win32_mingw.zip
+if "%locale%"=="Russian" (
+	echo Загрузка I2Pd
 ) else (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.11.0/i2pd_2.11.0_win64_mingw.zip
-	if errorlevel 1 (echo ERROR:%ErrorLevel%) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.11.0_win64_mingw.zip > nul
-	del /Q i2pd_2.11.0_win64_mingw.zip
+	echo Downloading I2Pd
+)
+if "xOS"=="x86" (
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.12.0/i2pd_2.12.0_win32_mingw.zip
+	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+	7z x -y -o..\i2pd i2pd_2.12.0_win32_mingw.zip > nul
+	del /Q i2pd_2.12.0_win32_mingw.zip
+) else (
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.12.0/i2pd_2.12.0_win64_mingw.zip
+	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+	7z x -y -o..\i2pd i2pd_2.12.0_win64_mingw.zip > nul
+	del /Q i2pd_2.12.0_win64_mingw.zip
 )
 xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
-echo I2Pd Browser portable готов к запуску!
+if "%locale%"=="Russian" (
+	echo I2Pd Browser portable готов к запуску!
+) else (
+	echo I2Pd Browser portable is ready to start!
+)
 pause
 exit
 
