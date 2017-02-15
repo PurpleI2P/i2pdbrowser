@@ -8,7 +8,7 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="45.6.0esr"
+version="45.7.0esr"
 application="firefox"
 
 echo "This script prepearing $application $version for use with I2Pd"
