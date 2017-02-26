@@ -11,7 +11,7 @@ language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
 version="45.7.0esr"
 application="firefox"
 
-curlfind=$(find /bin /usr/bin /usr/sbin /usr/local/bin -type f -name curl)
+curlfind=$(which curl)
 if [ -z $curlfind ]; then
 	echo "Can't find cURL installed. That script needs it!";
 	exit 1;
@@ -25,16 +25,24 @@ url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$lan
 echo "Downloading $application..."
 curl -L -f -# -O $url
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
-	echo "I'll try download Firefox with shortener language code";
+	echo "[TRY 2] I'll try download Firefox with shortener language code";
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
 	url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
 	curl -L -f -# -O $url
 fi
+if [ $? -ne 0 ]; then # Not found error, trying to download english version
+        echo "[TRY 3] I'll try download Firefox with English language code";
+        language="en_US"
+        # re-create variable with cutted lang
+        url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
+        curl -L -f -# -O $url
+fi
 if [ ! -f $file ]; then
-	echo "Can't find downloaded file. Does FireFox support your system language?"
+	echo "[Error] Can't find downloaded file. Check your internet connectivity."
 	exit 1;
 fi
+
 echo "Extracting archive, please wait..."
 tar xfj $file
 rm $file
