@@ -8,12 +8,12 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="45.7.0esr"
+version="45.8.0esr"
 application="firefox"
 
 curlfind=$(which curl)
 if [ -z $curlfind ]; then
-	echo "Can't find cURL installed. That script needs it!";
+	echo "Can't find 'cURL' installed. That script needs it!";
 	exit 1;
 fi
 
@@ -32,11 +32,11 @@ if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	curl -L -f -# -O $url
 fi
 if [ $? -ne 0 ]; then # Not found error, trying to download english version
-        echo "[TRY 3] I'll try download Firefox with English language code";
-        language="en_US"
-        # re-create variable with cutted lang
-        url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
-        curl -L -f -# -O $url
+		echo "[TRY 3] I'll try download Firefox with English language code";
+		language="en_US"
+		# re-create lang variable
+		url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
+		curl -L -f -# -O $url
 fi
 if [ ! -f $file ]; then
 	echo "[Error] Can't find downloaded file. Check your internet connectivity."

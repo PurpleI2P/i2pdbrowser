@@ -3,10 +3,10 @@
 ; See full license text in LICENSE file at top of project tree
 ;!@Install@!UTF-8!
 GUIFlags="2+4+8+16+32+64+1024+2048+4096"
-Title="Установка I2Pd Browser Portable"
-BeginPromptTimeout="30"
-BeginPrompt="Сейчас будет произведено извлечение:\n\tI2Pd Browser Portable"
-ExtractTitle="Подождите..."
-ExtractDialogText="Распаковка файлов..."
+Title="Extracting I2Pd Browser Portable"
+BeginPromptTimeout="15"
+BeginPrompt="Now we will extract: I2Pd Browser Portable"
+ExtractTitle="Please wait..."
+ExtractDialogText="Extracting files..."
 InstallPath="%UserDesktop%\\I2PdBrowserPortable"
 ;!@InstallEnd@!

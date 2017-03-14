@@ -10,8 +10,8 @@ arch=$(uname -m)
 
 screenfind=$(which screen)
 if [ -z $curlfind ]; then
-        echo "Can't find 'screen' installed. That script needs it!";
-        exit 1;
+		echo "Can't find 'screen' installed. That script needs it!";
+		exit 1;
 fi
 
 if [ $arch == "x86_64" ]
@@ -19,5 +19,3 @@ if [ $arch == "x86_64" ]
 else
 	screen -Adm -S i2pd ./i2pd-i386 --datadir=.
 fi
-
-

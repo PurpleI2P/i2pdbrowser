@@ -1,4 +1,9 @@
 @echo off
+
+REM Copyright (c) 2013-2017, The PurpleI2P Project
+REM This file is part of Purple i2pd project and licensed under BSD3
+REM See full license text in LICENSE file at top of project tree
+
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
@@ -18,7 +23,7 @@ if "%locale%"=="Russian" (
 	echo Downloading Firefox Portable ESR installer
 )
 
-"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%2045.7.0/FirefoxPortableESR_45.7.0_%locale%.paf.exe %$X%
+"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%2045.8.0/FirefoxPortableESR_45.8.0_%locale%.paf.exe %$X%
 if errorlevel 1 (
 	echo ERROR:%ErrorLevel%
 	pause
@@ -32,8 +37,8 @@ if "%locale%"=="Russian" (
 	echo Unpacking the installer and delete unnecessary files
 )
 
-7z x -y -o..\Firefox FirefoxPortableESR_45.7.0_%locale%.paf.exe > nul
-del /Q FirefoxPortableESR_45.7.0_%locale%.paf.exe
+7z x -y -o..\Firefox FirefoxPortableESR_45.8.0_%locale%.paf.exe > nul
+del /Q FirefoxPortableESR_45.8.0_%locale%.paf.exe
 rmdir /S /Q ..\Firefox\$PLUGINSDIR
 rmdir /S /Q ..\Firefox\App\AppInfo
 rmdir /S /Q ..\Firefox\App\Bin
