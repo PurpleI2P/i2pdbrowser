@@ -10,7 +10,7 @@ REM На выходе получаем 7z архив, в котором будут лежать папки Firefox, I2Pd, src
 
 echo Создаем 7z SFX - самораспаковывающийся архив...
 REM На выходе получаем самораспаковывающийся архив, архив после этого удаляем.
-copy /b 7zsd_LZMA2_i2pdbrowser_1.2.sfx + config.txt + I2PdBrowserPortable.7z I2PdBrowserPortable_1.2.exe >> nul
+copy /b 7zsd_LZMA2_i2pdbrowser_1.2.1.sfx + config.txt + I2PdBrowserPortable.7z I2PdBrowserPortable_1.2.1.exe >> nul
 del I2PdBrowserPortable.7z >> nul
 
 echo Готово!
