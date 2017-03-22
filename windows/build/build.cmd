@@ -108,7 +108,7 @@ if "%locale%"=="Russian" (
 ) else (
 	echo Downloading I2Pd
 )
-if "xOS"=="x86" (
+if "%xOS%"=="x86" (
 	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.12.0/i2pd_2.12.0_win32_mingw.zip
 	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 	7z x -y -o..\i2pd i2pd_2.12.0_win32_mingw.zip > nul
