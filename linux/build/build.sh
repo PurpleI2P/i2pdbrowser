@@ -10,6 +10,7 @@ arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
 version="45.8.0esr"
 application="firefox"
+ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
 curlfind=$(which curl)
 if [ -z $curlfind ]; then
@@ -20,27 +21,44 @@ fi
 echo "This script prepearing $application $version for use with I2Pd"
 
 file="$application-$version.tar.bz2"
-url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
+filepath="linux-$arch/$language/$file"
 
 echo "Downloading $application..."
-curl -L -f -# -O $url
+curl -L -f -# -O $ftpmirror/$filepath
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	echo "[TRY 2] I'll try download Firefox with shortener language code";
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
-	url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
-	curl -L -f -# -O $url
-fi
-if [ $? -ne 0 ]; then # Not found error, trying to download english version
+	filepath="linux-$arch/$language/$file"
+	curl -L -f -# -O $ftpmirror/$filepath
+	if [ $? -ne 0 ]; then # Not found error, trying to download english version
 		echo "[TRY 3] I'll try download Firefox with English language code";
 		language="en_US"
 		# re-create lang variable
-		url="https://ftp.mozilla.org/pub/$application/releases/$version/linux-$arch/$language/$file"
-		curl -L -f -# -O $url
+		filepath="linux-$arch/$language/$file"
+		curl -L -f -# -O $ftpmirror/$filepath
+		if [ $? -ne 0 ]; then # After that i can say only that user haven't internet connection
+			echo "[Error] Can't download file. Check your internet connectivity."
+			exit 1;
+		fi
+	fi
 fi
+
 if [ ! -f $file ]; then
-	echo "[Error] Can't find downloaded file. Check your internet connectivity."
+	echo "[Error] Can't find downloaded file. Is it really exists?"
 	exit 1;
+fi
+
+echo "Downloading checksum file and checking SHA512 checksum"
+curl -L -f -# -O $ftpmirror/SHA512SUMS
+recv_sum=$(grep "$filepath" SHA512SUMS | cut -c-128)
+file_sum=$(sha512sum $file | cut -c-128)
+if [ $recv_sum != $file_sum ]; then
+	echo "[Error] File checksum failed!"
+	exit 1;
+else
+	echo "Checksum correct."
+	rm SHA512SUMS
 fi
 
 echo "Extracting archive, please wait..."
