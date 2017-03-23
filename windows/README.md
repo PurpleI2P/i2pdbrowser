@@ -6,3 +6,5 @@ i2pdbrowser windows
 * Curl: https://winampplugins.co.uk/curl/
 * CA Root Certificates: https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
 * sed: http://unxutils.sourceforge.net/
+
+SHA512SUMS создан командой `find * -type f -print0 | xargs -0 -i sha512sum {}` в Debian.
