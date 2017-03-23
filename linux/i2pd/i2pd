@@ -9,7 +9,7 @@
 arch=$(uname -m)
 
 screenfind=$(which screen)
-if [ -z $curlfind ]; then
+if [ -z $screenfind ]; then
 		echo "Can't find 'screen' installed. That script needs it!";
 		exit 1;
 fi
