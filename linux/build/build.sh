@@ -88,7 +88,7 @@ mv addon-722-latest.xpi ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f
 echo "Adding standart configs..."
 cp profile/* ../data/
 mkdir -p ../app/browser/defaults
-cp preferences ../app/browser/defaults
+cp -r preferences ../app/browser/defaults/
 
 echo '#!/bin/sh' > "../${application}-portable"
 echo 'dir=${0%/*}' >> "../${application}-portable"
