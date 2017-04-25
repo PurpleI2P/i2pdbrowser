@@ -86,7 +86,9 @@ curl -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/ad
 mv addon-722-latest.xpi ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 
 echo "Adding standart configs..."
-cp configs/* ../data/
+cp profile/* ../data/
+mkdir -p ../app/browser/defaults
+cp preferences ../app/browser/defaults
 
 echo '#!/bin/sh' > "../${application}-portable"
 echo 'dir=${0%/*}' >> "../${application}-portable"
