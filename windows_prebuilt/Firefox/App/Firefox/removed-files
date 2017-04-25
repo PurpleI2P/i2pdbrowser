@@ -1,8 +1,4 @@
 distribution/extensions/testpilot@labs.mozilla.com.xpi
-chrome.manifest
-#ifdef XP_MACOSX
-chrome.manifest
-#endif
 chrome/
 chrome/overlayinfo/
 components/

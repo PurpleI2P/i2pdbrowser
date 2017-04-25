@@ -8,7 +8,7 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="45.8.0esr"
+version="52.1.0esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -77,8 +77,8 @@ rm -r ../app/dictionaries
 # And edit some places
 sed -i 's/Enabled=1/Enabled=0/g' ../app/application.ini
 sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
-sed -i 's/Enabled=1/Enabled=0/g' ../app/webapprt/webapprt.ini
-sed -i 's/ServerURL=.*/ServerURL=-/' ../app/webapprt/webapprt.ini
+# sed -i 's/Enabled=1/Enabled=0/g' ../app/webapprt/webapprt.ini
+# sed -i 's/ServerURL=.*/ServerURL=-/' ../app/webapprt/webapprt.ini
 # Done!
 
 echo "Downloading NoScript extension..."
