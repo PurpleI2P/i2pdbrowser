@@ -111,15 +111,15 @@ if "%locale%"=="Russian" (
 	echo Downloading I2Pd
 )
 if "xOS"=="x86" (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.13.0/i2pd_2.13.0_win32_mingw.zip
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.14.0/i2pd_2.14.0_win32_mingw.zip
 	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.13.0_win32_mingw.zip > nul
-	del /Q i2pd_2.13.0_win32_mingw.zip
+	7z x -y -o..\i2pd i2pd_2.14.0_win32_mingw.zip > nul
+	del /Q i2pd_2.14.0_win32_mingw.zip
 ) else (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.13.0/i2pd_2.13.0_win64_mingw.zip
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.14.0/i2pd_2.14.0_win64_mingw.zip
 	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.13.0_win64_mingw.zip > nul
-	del /Q i2pd_2.13.0_win64_mingw.zip
+	7z x -y -o..\i2pd i2pd_2.14.0_win64_mingw.zip > nul
+	del /Q i2pd_2.14.0_win64_mingw.zip
 )
 xcopy /E /I /Y i2pd ..\i2pd > nul
 
