@@ -140,7 +140,7 @@ pref("dom.flyweb.enabled", false);
 pref("dom.gamepad.enabled", false);
 pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
 pref("dom.ipc.plugins.reportCrashURL", false);
-pref("dom.indexedDB.enabled", false);
+//pref("dom.indexedDB.enabled", false);
 pref("dom.mozTCPSocket.enabled", false);
 pref("dom.netinfo.enabled", false);
 pref("dom.network.enabled", false);
