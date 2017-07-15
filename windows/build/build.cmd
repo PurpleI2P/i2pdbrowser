@@ -7,6 +7,8 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
+set FFversion=52.2.1
+set I2Pdversion=2.14.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -23,7 +25,7 @@ if "%locale%"=="Russian" (
 	echo Downloading Firefox Portable ESR installer
 )
 
-"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%2052.1.2/FirefoxPortableESR_52.1.2_%locale%.paf.exe %$X%
+"%CURL%" -L -f -# -O https://downloads.sourceforge.net/project/portableapps/Mozilla%%20Firefox%%2C%%20Portable%%20Ed./Mozilla%%20Firefox%%20ESR%%2C%%20Portable%%20Edition%%20%FFversion%/FirefoxPortableESR_%FFversion%_%locale%.paf.exe %$X%
 if errorlevel 1 (
 	echo ERROR:%ErrorLevel%
 	pause
@@ -37,8 +39,8 @@ if "%locale%"=="Russian" (
 	echo Unpacking the installer and delete unnecessary files
 )
 
-7z x -y -o..\Firefox FirefoxPortableESR_52.1.2_%locale%.paf.exe > nul
-del /Q FirefoxPortableESR_52.1.2_%locale%.paf.exe
+7z x -y -o..\Firefox FirefoxPortableESR_%FFversion%_%locale%.paf.exe > nul
+del /Q FirefoxPortableESR_%FFversion%_%locale%.paf.exe
 rmdir /S /Q ..\Firefox\$PLUGINSDIR
 rmdir /S /Q ..\Firefox\App\AppInfo
 rmdir /S /Q ..\Firefox\App\Bin
@@ -111,15 +113,15 @@ if "%locale%"=="Russian" (
 	echo Downloading I2Pd
 )
 if "xOS"=="x86" (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.14.0/i2pd_2.14.0_win32_mingw.zip
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/%I2Pdversion%/i2pd_%I2Pdversion%_win32_mingw.zip
 	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.14.0_win32_mingw.zip > nul
-	del /Q i2pd_2.14.0_win32_mingw.zip
+	7z x -y -o..\i2pd i2pd_%I2Pdversion%_win32_mingw.zip i2pd.exe > nul
+	del /Q i2pd_%I2Pdversion%_win32_mingw.zip
 ) else (
-	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/2.14.0/i2pd_2.14.0_win64_mingw.zip
+	"%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/%I2Pdversion%/i2pd_%I2Pdversion%_win64_mingw.zip
 	if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-	7z x -y -o..\i2pd i2pd_2.14.0_win64_mingw.zip > nul
-	del /Q i2pd_2.14.0_win64_mingw.zip
+	7z x -y -o..\i2pd i2pd_%I2Pdversion%_win64_mingw.zip i2pd.exe > nul
+	del /Q i2pd_%I2Pdversion%_win64_mingw.zip
 )
 xcopy /E /I /Y i2pd ..\i2pd > nul
 
