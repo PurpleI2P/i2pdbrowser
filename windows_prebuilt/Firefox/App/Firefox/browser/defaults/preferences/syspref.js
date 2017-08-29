@@ -258,7 +258,8 @@ pref("plugin.state.java", 0);
 pref("plugin.state.libgnome-shell-browser-plugin", 0);
 pref("plugins.click_to_play", true);
 pref("plugins.load_appdir_plugins", false);
-pref("plugins.update.notifyUser", true);
+pref("plugins.update.notifyUser", false);
+pref("plugins.update.url", "");
 // PREF: Clear history when Firefox closes
 // pref("privacy.sanitize.sanitizeOnShutdown", true);
 // pref("privacy.clearOnShutdown.cache", true);
