@@ -7,8 +7,8 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=52.2.1
-set I2Pdversion=2.14.0
+set FFversion=52.4.1
+set I2Pdversion=2.15.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -136,7 +136,7 @@ exit
 
 :GET_LOCALE
 for /f "tokens=3" %%a in ('reg query "HKEY_USERS\.DEFAULT\Keyboard Layout\Preload"^|find "REG_SZ"') do (
-	if %%a==00000419 (set locale=Russian) else (set locale=English)
+	if %%a==00000419 (set locale=Russian) else (set locale=Russian)
 	goto :eof
 )
 goto :eof
