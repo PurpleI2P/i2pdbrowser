@@ -2,13 +2,13 @@
 
 # Copyright (c) 2013-2017, The PurpleI2P Project
 #
-# This file is part of Purple i2pd project and licensed under BSD3
+# This file is part of Purple I2P project and licensed under BSD3
 #
 # See full license text in LICENSE file at top of project tree
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="52.2.1esr"
+version="52.4.1esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 

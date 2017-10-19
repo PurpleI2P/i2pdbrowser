@@ -5,6 +5,7 @@ REM See full license text in LICENSE file at top of project tree
 
 title Starting I2Pd Browser
 set $pause=ping.exe 0.0.0.0 -n
+set $cd=%CD%
 ver| find "6." >nul && set $pause=timeout.exe /t
 
 set fire=firefox.exe
@@ -18,8 +19,8 @@ REM taskList|find /i "%fire%">nul&&(taskkill /im "%fire%" >nul)
 taskList|find /i "%i2pd%">nul&&(goto runfox)||(goto starti2p)
 
 :starti2p
-
-start "" "I2Pd/%i2pd%"
+cd i2pd
+start "" "%i2pd%"
 
 echo i2pd Browser starting
 echo Please wait
@@ -28,11 +29,12 @@ for /L %%B in (0,1,35) do (call :EchoWithoutCrLf "." && %$pause% 2 >nul)
 echo .
 echo -------------------------------------
 echo Welcome to I2P Network
+cd %$cd%
 
 :runfox
-
-start "" "FireFox/%port%"
-
+cd Firefox
+start "" "%port%"
+cd %$cd%
 exit /b 0
 
 
