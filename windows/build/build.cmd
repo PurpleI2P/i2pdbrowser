@@ -14,10 +14,10 @@ call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="Russian" (
-	echo ���ઠ I2Pd Browser Portable
-	echo ���⥬��� ������: %locale%, ����⥪����: %xOS%
+	echo ‘¡®àª  I2Pd Browser Portable
+	echo ‘¨áâ¥¬­ ï «®ª «ì: %locale%,  àå¨â¥ªâãà : %xOS%
 	echo.
-	echo ����㧪� ��⠭��騪� Firefox Portable ESR
+	echo ‡ £àã§ª  ãáâ ­®¢é¨ª  Firefox Portable ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo System locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="Russian" (
-	echo ��ᯠ����� ��⠭��騪� � 㤠����� �� �㦭�� 䠩���
+	echo  á¯ ª®¢ª  ãáâ ­®¢é¨ª  ¨ ã¤ «¥­¨¥ ­¥ ­ã¦­ëå ä ©«®¢
 ) else (
 	echo Unpacking the installer and deleting unnecessary files
 )
@@ -69,7 +69,7 @@ rem	rmdir /S /Q ..\Firefox\App\Firefox
 rem )
 
 if "%locale%"=="Russian" (
-	echo �⪫�祭�� ����⮢ � �������
+	echo Žâª«îç¥­¨¥ ®âç¥â®¢ ® ¯ ¤¥­¨¨
 ) else (
 	echo Disabling crash reports
 )
@@ -82,7 +82,7 @@ rem ) else (
 rem )
 
 if "%locale%"=="Russian" (
-	echo ����㧪� ���������� NoScript
+	echo ‡ £àã§ª  ¤®¯®«­¥­¨ï NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -95,7 +95,7 @@ del /Q addon-722-latest.xpi
 
 echo.
 if "%locale%"=="Russian" (
-	echo ����஢���� 䠩��� ����஥� � ����� Firefox
+	echo Š®¯¨à®¢ ­¨¥ ä ©«®¢ ­ áâà®¥ª ¢ ¯ ¯ªã Firefox
 ) else (
 	echo Copying Firefox settings
 )
@@ -108,7 +108,7 @@ copy /Y preferences\* ..\Firefox\App\Firefox\browser\defaults\preferences\ > nul
 copy /Y preferences\* ..\Firefox\App\Firefox64\browser\defaults\preferences\ > nul
 
 if "%locale%"=="Russian" (
-	echo ����㧪� I2Pd
+	echo ‡ £àã§ª  I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -127,7 +127,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="Russian" (
-	echo I2Pd Browser Portable ��⮢ � �������!
+	echo I2Pd Browser Portable £®â®¢ ª § ¯ãáªã!
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
