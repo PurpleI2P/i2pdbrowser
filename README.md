@@ -1,4 +1,4 @@
-#i2pdbrowser
+# i2pdbrowser
 --------
 ### English
 i2pd browser bundle
@@ -6,12 +6,12 @@ i2pd browser bundle
 This is a collection of scripts that will download the recent Firefox ESR release and configure it to connect over I2P, using i2pd.
 A pre-built version for Windows is also included.
 
-##How to use it on Linux
+## How to use it on Linux
 
 1. Build preconfigured FireFox using script `build.sh` from `build` folder
 2. Run i2pd by executing `./i2pd` from `i2pd` folder
 3. Run FireFox by executing `./firefox-portable`
 
-###TODO:
+### TODO:
 * English version of Windows how-to for using it.
 * Russian translation of README, both this one and the one for /windows
