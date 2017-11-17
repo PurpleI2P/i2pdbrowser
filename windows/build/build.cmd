@@ -14,10 +14,10 @@ call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="Russian" (
-	echo ‘¡®àª  I2Pd Browser Portable
-	echo ‘¨áâ¥¬­ ï «®ª «ì: %locale%,  àå¨â¥ªâãà : %xOS%
+	echo â€˜Â¡Â®Ã Âª  I2Pd Browser Portable
+	echo â€˜Â¨Ã¡Ã¢Â¥Â¬Â­ Ã¯ Â«Â®Âª Â«Ã¬: %locale%,  Ã Ã¥Â¨Ã¢Â¥ÂªÃ¢Ã£Ã  : %xOS%
 	echo.
-	echo ‡ £àã§ª  ãáâ ­®¢é¨ª  Firefox Portable ESR
+	echo â€¡ Â£Ã Ã£Â§Âª  Ã£Ã¡Ã¢ Â­Â®Â¢Ã©Â¨Âª  Firefox Portable ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo System locale: %locale%, architecture: %xOS%
@@ -34,9 +34,9 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="Russian" (
-	echo  á¯ ª®¢ª  ãáâ ­®¢é¨ª  ¨ ã¤ «¥­¨¥ ­¥ ­ã¦­ëå ä ©«®¢
+	echo  Ã¡Â¯ ÂªÂ®Â¢Âª  Ã£Ã¡Ã¢ Â­Â®Â¢Ã©Â¨Âª  Â¨ Ã£Â¤ Â«Â¥Â­Â¨Â¥ Â­Â¥ Â­Ã£Â¦Â­Ã«Ã¥ Ã¤ Â©Â«Â®Â¢
 ) else (
-	echo Unpacking the installer and delete unnecessary files
+	echo Unpacking the installer and deleting unnecessary files
 )
 
 7z x -y -o..\Firefox FirefoxPortableESR_%FFversion%_%locale%.paf.exe > nul
@@ -69,7 +69,7 @@ rem	rmdir /S /Q ..\Firefox\App\Firefox
 rem )
 
 if "%locale%"=="Russian" (
-	echo Žâª«îç¥­¨¥ ®âç¥â®¢ ® ¯ ¤¥­¨¨
+	echo Å½Ã¢ÂªÂ«Ã®Ã§Â¥Â­Â¨Â¥ Â®Ã¢Ã§Â¥Ã¢Â®Â¢ Â® Â¯ Â¤Â¥Â­Â¨Â¨
 ) else (
 	echo Disabling crash reports
 )
@@ -82,7 +82,7 @@ rem ) else (
 rem )
 
 if "%locale%"=="Russian" (
-	echo ‡ £àã§ª  ¤®¯®«­¥­¨ï NoScript
+	echo â€¡ Â£Ã Ã£Â§Âª  Â¤Â®Â¯Â®Â«Â­Â¥Â­Â¨Ã¯ NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -95,7 +95,7 @@ del /Q addon-722-latest.xpi
 
 echo.
 if "%locale%"=="Russian" (
-	echo Š®¯¨à®¢ ­¨¥ ä ©«®¢ ­ áâà®¥ª ¢ ¯ ¯ªã Firefox
+	echo Å Â®Â¯Â¨Ã Â®Â¢ Â­Â¨Â¥ Ã¤ Â©Â«Â®Â¢ Â­ Ã¡Ã¢Ã Â®Â¥Âª Â¢ Â¯ Â¯ÂªÃ£ Firefox
 ) else (
 	echo Copying Firefox settings
 )
@@ -108,7 +108,7 @@ copy /Y preferences\* ..\Firefox\App\Firefox\browser\defaults\preferences\ > nul
 copy /Y preferences\* ..\Firefox\App\Firefox64\browser\defaults\preferences\ > nul
 
 if "%locale%"=="Russian" (
-	echo ‡ £àã§ª  I2Pd
+	echo â€¡ Â£Ã Ã£Â§Âª  I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -127,9 +127,9 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="Russian" (
-	echo I2Pd Browser portable £®â®¢ ª § ¯ãáªã!
+	echo I2Pd Browser Portable Â£Â®Ã¢Â®Â¢ Âª Â§ Â¯Ã£Ã¡ÂªÃ£!
 ) else (
-	echo I2Pd Browser portable is ready to start!
+	echo I2Pd Browser Portable is ready to start!
 )
 pause
 exit
