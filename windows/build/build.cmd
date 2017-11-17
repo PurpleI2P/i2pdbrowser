@@ -7,17 +7,17 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=52.4.1
-set I2Pdversion=2.15.0
+set FFversion=52.5.0
+set I2Pdversion=2.16.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="Russian" (
-	echo ‘¡®àª  I2Pd Browser Portable
-	echo ‘¨áâ¥¬­ ï «®ª «ì: %locale%,  àå¨â¥ªâãà : %xOS%
+	echo ï¿½ï¿½ï¿½àª  I2Pd Browser Portable
+	echo ï¿½ï¿½ï¿½â¥¬ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: %locale%, ï¿½ï¿½ï¿½ï¿½â¥ªï¿½ï¿½ï¿½ï¿½: %xOS%
 	echo.
-	echo ‡ £àã§ª  ãáâ ­®¢é¨ª  Firefox Portable ESR
+	echo ï¿½ï¿½ï¿½ï¿½ã§ªï¿½ ï¿½ï¿½â ­ï¿½ï¿½é¨ªï¿½ Firefox Portable ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo System locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="Russian" (
-	echo  á¯ ª®¢ª  ãáâ ­®¢é¨ª  ¨ ã¤ «¥­¨¥ ­¥ ­ã¦­ëå ä ©«®¢
+	echo ï¿½ï¿½á¯ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½â ­ï¿½ï¿½é¨ªï¿½ ï¿½ ã¤ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ã¦­ï¿½ï¿½ ä ©ï¿½ï¿½ï¿½
 ) else (
 	echo Unpacking the installer and delete unnecessary files
 )
@@ -69,7 +69,7 @@ rem	rmdir /S /Q ..\Firefox\App\Firefox
 rem )
 
 if "%locale%"=="Russian" (
-	echo Žâª«îç¥­¨¥ ®âç¥â®¢ ® ¯ ¤¥­¨¨
+	echo ï¿½âª«ï¿½ç¥­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½â®¢ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ) else (
 	echo Disabling crash reports
 )
@@ -82,7 +82,7 @@ rem ) else (
 rem )
 
 if "%locale%"=="Russian" (
-	echo ‡ £àã§ª  ¤®¯®«­¥­¨ï NoScript
+	echo ï¿½ï¿½ï¿½ï¿½ã§ªï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -95,7 +95,7 @@ del /Q addon-722-latest.xpi
 
 echo.
 if "%locale%"=="Russian" (
-	echo Š®¯¨à®¢ ­¨¥ ä ©«®¢ ­ áâà®¥ª ¢ ¯ ¯ªã Firefox
+	echo ï¿½ï¿½ï¿½ï¿½à®¢ï¿½ï¿½ï¿½ï¿½ ä ©ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½à®¥ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Firefox
 ) else (
 	echo Copying Firefox settings
 )
@@ -108,7 +108,7 @@ copy /Y preferences\* ..\Firefox\App\Firefox\browser\defaults\preferences\ > nul
 copy /Y preferences\* ..\Firefox\App\Firefox64\browser\defaults\preferences\ > nul
 
 if "%locale%"=="Russian" (
-	echo ‡ £àã§ª  I2Pd
+	echo ï¿½ï¿½ï¿½ï¿½ã§ªï¿½ I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -127,7 +127,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="Russian" (
-	echo I2Pd Browser portable £®â®¢ ª § ¯ãáªã!
+	echo I2Pd Browser portable ï¿½ï¿½â®¢ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!
 ) else (
 	echo I2Pd Browser portable is ready to start!
 )
