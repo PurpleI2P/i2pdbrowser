@@ -36,7 +36,7 @@ echo.
 if "%locale%"=="Russian" (
 	echo Распаковка установщика и удаление не нужных файлов
 ) else (
-	echo Unpacking the installer and delete unnecessary files
+	echo Unpacking the installer and deleting unnecessary files
 )
 
 7z x -y -o..\Firefox FirefoxPortableESR_%FFversion%_%locale%.paf.exe > nul
@@ -127,9 +127,9 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="Russian" (
-	echo I2Pd Browser portable готов к запуску!
+	echo I2Pd Browser Portable готов к запуску!
 ) else (
-	echo I2Pd Browser portable is ready to start!
+	echo I2Pd Browser Portable is ready to start!
 )
 pause
 exit
