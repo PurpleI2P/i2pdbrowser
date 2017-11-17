@@ -14,11 +14,11 @@ ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
 curlfind=$(which curl)
 if [ -z $curlfind ]; then
-	echo "Can't find 'cURL' installed. That script needs it!";
+	echo "'cURL' does not seem to be installed. The script needs it!";
 	exit 1;
 fi
 
-echo "This script prepearing $application $version for use with I2Pd"
+echo "This script is preparing $application $version for use with I2Pd"
 
 file="$application-$version.tar.bz2"
 filepath="linux-$arch/$language/$file"
@@ -26,13 +26,13 @@ filepath="linux-$arch/$language/$file"
 echo "Downloading $application..."
 curl -L -f -# -O $ftpmirror/$filepath
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
-	echo "[TRY 2] I'll try download Firefox with shortener language code";
+	echo "[TRY 2] I'll try downloading Firefox with shorter language code";
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
 	filepath="linux-$arch/$language/$file"
 	curl -L -f -# -O $ftpmirror/$filepath
 	if [ $? -ne 0 ]; then # Not found error, trying to download english version
-		echo "[TRY 3] I'll try download Firefox with English language code";
+		echo "[TRY 3] I'll try downloading Firefox with the English language code";
 		language="en_US"
 		# re-create lang variable
 		filepath="linux-$arch/$language/$file"
@@ -45,7 +45,7 @@ if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 fi
 
 if [ ! -f $file ]; then
-	echo "[Error] Can't find downloaded file. Is it really exists?"
+	echo "[Error] Can't find downloaded file. Does it really exist?"
 	exit 1;
 fi
 
@@ -85,7 +85,7 @@ echo "Downloading NoScript extension..."
 curl -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
 mv addon-722-latest.xpi ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 
-echo "Adding standart configs..."
+echo "Adding standard configs..."
 cp profile/* ../data/
 mkdir -p ../app/browser/defaults
 cp -r preferences ../app/browser/defaults/
