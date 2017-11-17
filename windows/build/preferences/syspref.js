@@ -291,7 +291,7 @@ pref("security.dialog_enable_delay", 1000);
 pref("security.fileuri.strict_origin_policy", true);
 pref("security.insecure_field_warning.contextual.enabled", false);
 // PREF: Enable insecure password warnings (login forms in non-HTTPS pages)
-pref("security.insecure_password.ui.enabled", false); 
+pref("security.insecure_password.ui.enabled", false);
 pref("security.mixed_content.block_active_content", true);
 pref("security.mixed_content.block_display_content", true);
 pref("services.blocklist.update_enabled", false);
@@ -321,3 +321,19 @@ pref("webgl.disable-extensions", true);
 pref("webgl.disable-fail-if-major-performance-caveat", true);
 pref("webgl.enable-debug-renderer-info", false);
 pref("webgl.min_capability_mode", true);
+// Ensure domain logging is disabled
+pref("loop.logDomains", false);
+// Spoof to dual-core cpu
+pref("dom.maxHardwareConcurrency",	2);
+// Disable offline cache
+pref("browser.cache.offline.enable", false);
+// Prevent tracking over multiple domains
+pref("privacy.firstparty.isolate", true);
+pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1");
+// In relation to webrtc
+pref("media.peerconnection.turn.disable", true);
+pref("media.peerconnection.use_document_iceservers", false);
+pref("media.peerconnection.identity.timeout", 1);
+pref("media.peerconnection.ice.default_address_only", true);
+// Disable url prefetch
+pref("browser.urlbar.speculativeConnect.enabled", false);
