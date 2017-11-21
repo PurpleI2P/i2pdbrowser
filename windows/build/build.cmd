@@ -87,11 +87,11 @@ if "%locale%"=="Russian" (
 	echo Downloading NoScript extension
 )
 
-"%CURL%" -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
+"%CURL%" -L -f -# -O https://secure.informaction.com/download/releases/noscript-5.1.7.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-copy /Y addon-722-latest.xpi ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
-copy /Y addon-722-latest.xpi ..\Firefox\App\Firefox64\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
-del /Q addon-722-latest.xpi
+copy /Y noscript-5.1.7.xpi ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+copy /Y noscript-5.1.7.xpi ..\Firefox\App\Firefox64\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
+del /Q noscript-5.1.7.xpi
 
 echo.
 if "%locale%"=="Russian" (
