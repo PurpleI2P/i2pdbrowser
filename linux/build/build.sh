@@ -82,8 +82,8 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
 # Done!
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -O https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
-mv addon-722-latest.xpi ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
+curl -L -f -# -O https://secure.informaction.com/download/releases/noscript-5.1.7.xpi
+mv noscript-5.1.7.xpi ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 
 echo "Adding standard configs..."
 cp profile/* ../data/
