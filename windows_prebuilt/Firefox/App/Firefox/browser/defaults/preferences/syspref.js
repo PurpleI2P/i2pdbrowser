@@ -337,3 +337,7 @@ pref("media.peerconnection.identity.timeout", 1);
 pref("media.peerconnection.ice.default_address_only", true);
 // Disable url prefetch
 pref("browser.urlbar.speculativeConnect.enabled", false);
+// Set platform, user-agent and locale to same values as Tor Browser 7.0.10
+pref("general.useragent.override", "Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0");
+pref("general.useragent.locale", "en-US");
+pref("general.platform.override", "Win32");
