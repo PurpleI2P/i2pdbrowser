@@ -1,4 +1,4 @@
-version="52.5.0esr"
+version="52.5.2esr"
 
 echo "This script is preparing Firefox ESR $version for use with i2pd"
 echo "Downloading latest Firefox ESR..."
