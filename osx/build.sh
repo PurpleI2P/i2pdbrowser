@@ -12,6 +12,6 @@ echo "Detaching image and removing image file..."
 hdiutil detach /Volumes/Firefox
 rm ./Firefox\ $version.dmg
 echo "Downloading NoScript extension..."
-curl --proto =https -L -f -# https://secure.informaction.com/download/releases/noscript-5.1.7.xpi
-mv ./noscript-5.1.7.xpi ./FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
+curl --proto =https -L -f -# https://secure.informaction.com/download/releases/noscript-5.1.8.2.xpi
+mv ./noscript-5.1.8.2.xpi ./FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
 echo "Done."
