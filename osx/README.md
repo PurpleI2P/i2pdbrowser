@@ -1,14 +1,23 @@
-## How-to
-NOTE: very very drafty script
+I2Pd Browser Portable builder for MacOS X
+=====
+This is a script-based builder of I2Pd Browser Portable
 
-run build.sh in one terminal
-run ./i2pd_2.16.0_osx/i2pd in another terminal
+What **MUST** work now (needed test)
+-----
+* Auto detecting system language
+* Pre-configuring Firefox to use with I2Pd
+* Auto downloading NoScript extension
 
-Open FF-ESR without the use of run.sh, with ./FirefoxESR/Contents/MacOS/firefox --profilemanager
+How to use
+-----
+1. Build pre-configured Firefox using script `build.sh` from `build` folder
+2. Run I2Pd by executing `./i2pd` from `i2pd` folder
+3. Run Firefox by executing `./i2pdbrowser-portable`
 
-Create a new profile, save it in this ./osx dir and name the profile "i2pdbb". Quit it again.
+Additional info
+-----
+`./i2pd` from `i2pd` folder starts a screen session with i2pd in it.
+To stop the i2pd router you can use the commands `Start graceful shutdown` or `Force shutdown`
+from i2pd webconsole page `http://127.0.0.1:7070/?page=commands`
 
-Firefox ESR is now configured and i2pd is running. When you want to run FF-ESR now, execute it through the run.sh script.
-
-## TODO:
-Place i2pd addressbook in datadir.
+SHA512SUMS created with `find * -type f -print0 | xargs -0 -i sha512sum {}` command
