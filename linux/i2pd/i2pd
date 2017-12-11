@@ -15,7 +15,7 @@ if [ -z $screenfind ]; then
 fi
 
 if [ $arch = "x86_64" ]; then
-	screen -Adm -S i2pd ./i2pd-x86_64 --datadir=.
+	screen -Adm -S i2pd ./i2pd-amd64 --datadir=.
 else
 	screen -Adm -S i2pd ./i2pd-i386 --datadir=.
 fi
