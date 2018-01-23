@@ -13,5 +13,6 @@ Links to software used for building i2pdbrowser
 * Curl: https://winampplugins.co.uk/curl/
 * CA Root Certificates: https://raw.githubusercontent.com/bagder/ca-bundle/master/ca-bundle.crt
 * sed: http://unxutils.sourceforge.net/
+* Firefox Portable launcher: https://portableapps.com/apps/internet/firefox-portable-esr
 
 SHA512SUMS created with `find * -type f -print0 | xargs -0 -i sha512sum {}` command

@@ -84,9 +84,12 @@ rm $file
 # sed -i 's/ServerURL=.*/ServerURL=-/' ../app/webapprt/webapprt.ini
 # Done!
 
+echo "Downloading language packs..."
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605634/russian_ru_language_pack-52.0-fx.xpi?src=version-history
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605596/english_us_language_pack-52.0-fx.xpi?src=version-history
+
 echo "Downloading NoScript extension..."
-curl -L -f -# -O https://secure.informaction.com/download/releases/noscript-5.1.8.2.xpi
-mv noscript-5.1.8.2.xpi ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/806790/noscript_security_suite-5.1.8.3-fx+sm.xpi
 
 echo "Adding standard configs..."
 cp profile/* ../data/
