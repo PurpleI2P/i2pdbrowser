@@ -8,7 +8,7 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="52.5.2esr"
+version="52.6.0esr"
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/$version"
 
 curlfind=$(which curl)
