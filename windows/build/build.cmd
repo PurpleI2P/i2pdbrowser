@@ -60,15 +60,23 @@ sed -i "s/Enabled=1/Enabled=0/g" ..\Firefox\App\Firefox\application.ini
 sed -i "s/ServerURL=.*/ServerURL=-/" ..\Firefox\App\Firefox\application.ini
 
 if "%locale%"=="ru" (
+	echo Загрузка языковых пакетов
+) else (
+	echo Downloading language packs
+)
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605634/russian_ru_language_pack-52.0-fx.xpi?src=version-history
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605596/english_us_language_pack-52.0-fx.xpi?src=version-history
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+
+echo.
+if "%locale%"=="ru" (
 	echo Загрузка дополнения NoScript
 ) else (
 	echo Downloading NoScript extension
 )
-
-"%CURL%" -L -f -# -O https://secure.informaction.com/download/releases/noscript-5.1.8.2.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/806790/noscript_security_suite-5.1.8.3-fx+sm.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-copy /Y noscript-5.1.8.2.xpi ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi > nul
-del /Q noscript-5.1.8.2.xpi
 
 echo.
 if "%locale%"=="ru" (
@@ -124,7 +132,7 @@ goto :eof
 
 :GET_ARCH
 set xOS=win32
-if defined PROCESSOR_ARCHITEW6432 (set xOS=x64) else if "%PROCESSOR_ARCHITECTURE%"=="AMD64" set xOS=win64
+REM if defined PROCESSOR_ARCHITEW6432 (set xOS=x64) else if "%PROCESSOR_ARCHITECTURE%"=="AMD64" set xOS=win64
 goto :eof
 
 :eof
