@@ -4,7 +4,7 @@
 i2pd browser bundle
 
 This is a collection of scripts that will download the recent Firefox ESR release and configure it to connect over I2P, using i2pd.
-A pre-built version for Windows is also included.
+Since 1.2.6 pre-built version for Windows is excluded from repository, but releases will contain it.
 
 ## How to use it on Linux
 
