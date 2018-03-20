@@ -1,7 +1,7 @@
 # Mozilla User preferences
 
 /*
- * Copyright (c) 2013-2017, The PurpleI2P Project
+ * Copyright (c) 2013-2018, The PurpleI2P Project
  *
  * This file is part of Purple i2pd project and licensed under BSD3
  *

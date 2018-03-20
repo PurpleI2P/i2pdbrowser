@@ -1,14 +1,14 @@
 @echo off
 
-REM Copyright (c) 2013-2017, The PurpleI2P Project
+REM Copyright (c) 2013-2018, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=52.6.0
-set I2Pdversion=2.17.0
+set FFversion=52.7.2
+set I2Pdversion=2.18.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -132,7 +132,7 @@ goto :eof
 
 :GET_ARCH
 set xOS=win32
-REM if defined PROCESSOR_ARCHITEW6432 (set xOS=x64) else if "%PROCESSOR_ARCHITECTURE%"=="AMD64" set xOS=win64
+if defined PROCESSOR_ARCHITEW6432 (set xOS=x64) else if "%PROCESSOR_ARCHITECTURE%" neq "x86" (set xOS=win64)
 goto :eof
 
 :eof

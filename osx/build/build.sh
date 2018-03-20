@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2017, The PurpleI2P Project
+# Copyright (c) 2013-2018, The PurpleI2P Project
 #
 # This file is part of Purple I2P project and licensed under BSD3
 #
@@ -8,8 +8,10 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="52.6.0esr"
-ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/$version"
+version="52.7.2esr"
+i2pdversion="2.18.0"
+
+ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
 curlfind=$(which curl)
 if [ -z $curlfind ]; then
@@ -19,23 +21,23 @@ fi
 
 echo "This script is preparing Firefox $version for use with I2Pd"
 
-file="Firefox\ $version.dmg"
-filepath="mac/$language/$file"
+file="Firefox\ ${version}.dmg"
+filepath="mac/${language}/${file}"
 
 echo "Downloading $application..."
-curl -L -f -# -O $ftpmirror/$filepath
+curl -L -f -# -O ${ftpmirror}/${filepath}
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	echo "[TRY 2] I'll try downloading Firefox with shorter language code";
 	language=$(echo $language | cut -c-2)
 	# re-create variable with cutted lang
 	filepath="mac/$language/$file"
-	curl -L -f -# -O $ftpmirror/$filepath
+	curl -L -f -# -O ${ftpmirror}/${filepath}
 	if [ $? -ne 0 ]; then # Not found error, trying to download english version
 		echo "[TRY 3] I'll try downloading Firefox with the English language code";
 		language="en_US"
 		# re-create lang variable
 		filepath="mac/$language/$file"
-		curl -L -f -# -O $ftpmirror/$filepath
+		curl -L -f -# -O ${ftpmirror}/${filepath}
 		if [ $? -ne 0 ]; then # After that i can say only that user haven't internet connection
 			echo "[Error] Can't download file. Check your internet connectivity."
 			exit 1;
@@ -49,7 +51,7 @@ if [ ! -f $file ]; then
 fi
 
 echo "Downloading checksum file and checking SHA512 checksum"
-curl -L -f -# -O $ftpmirror/SHA512SUMS
+curl -L -f -# -O ${ftpmirror}/SHA512SUMS
 recv_sum=$(grep "$filepath" SHA512SUMS | cut -c-128)
 file_sum=$(sha512sum $file | cut -c-128)
 if [ $recv_sum != $file_sum ]; then
@@ -105,5 +107,11 @@ echo 'FirefoxESR.app/Contents/MacOS/firefox -profile ../data -no-remote' >> "../
 
 chmod +x "../i2pdbrowser-portable"
 
+echo "Downloading i2pd..."
+curl -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/${i2pdversion}/i2pd_${i2pdversion}_osx.tar.gz
+mkdir ../i2pd
+tar xfz i2pd_${i2pdversion}_osx.tar.gz -C ../i2pd
+mv ../i2pd/i2pd ../i2pd/i2pd-osx
+cp -rf i2pd ../i2pd
 
 echo "... finished"

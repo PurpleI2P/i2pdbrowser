@@ -1,9 +1,9 @@
 @ECHO OFF
-REM Copyright (c) 2013-2017, The PurpleI2P Project
+REM Copyright (c) 2013-2018, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
-title Starting I2Pd Browser 1.2.6
+title Starting I2Pd Browser 1.2.7
 set $pause=ping.exe 0.0.0.0 -n
 set $cd=%CD%
 ver| find "6." >nul && set $pause=timeout.exe /t
