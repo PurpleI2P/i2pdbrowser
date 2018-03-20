@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2017, The PurpleI2P Project
+# Copyright (c) 2013-2018, The PurpleI2P Project
 #
 # This file is part of Purple I2P project and licensed under BSD3
 #
@@ -8,7 +8,7 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="52.6.0esr"
+version="52.7.2esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
