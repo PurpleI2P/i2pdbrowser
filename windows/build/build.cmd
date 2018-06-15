@@ -7,7 +7,7 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=52.7.2
+set FFversion=60.0.2
 set I2Pdversion=2.18.0
 call :GET_LOCALE
 call :GET_PROXY
@@ -17,12 +17,12 @@ if "%locale%"=="ru" (
 	echo Сборка I2Pd Browser Portable
 	echo Язык браузера: %locale%, архитектура: %xOS%
 	echo.
-	echo Загрузка установщика Firefox Portable ESR
+	echo Загрузка установщика Firefox ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo Browser locale: %locale%, architecture: %xOS%
 	echo.
-	echo Downloading Firefox Portable ESR installer
+	echo Downloading Firefox ESR installer
 )
 
 "%CURL%" -L -f -# -o firefox.exe https://ftp.mozilla.org/pub/firefox/releases/%FFversion%esr/%xOS%/%locale%/Firefox%%20Setup%%20%FFversion%esr.exe %$X%
@@ -64,9 +64,9 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading language packs
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605634/russian_ru_language_pack-52.0-fx.xpi?src=version-history
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978562/russian_ru_language_pack-60.0buildid20180605171542-an+fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605596/english_us_language_pack-52.0-fx.xpi?src=version-history
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
@@ -75,7 +75,7 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading NoScript extension
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/806790/noscript_security_suite-5.1.8.3-fx+sm.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/972162/noscript_security_suite-10.1.8.2-an+fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
@@ -85,10 +85,9 @@ if "%locale%"=="ru" (
 	echo Copying Firefox launcher and settings
 )
 mkdir ..\Firefox\App\DefaultData\profile\ > nul
-mkdir ..\Firefox\App\Firefox\browser\defaults\preferences\ > nul
 copy /Y profile\* ..\Firefox\App\DefaultData\profile\ > nul
 copy /Y firefox-portable\* ..\Firefox\ > nul
-copy /Y preferences\* ..\Firefox\App\Firefox\browser\defaults\preferences\ > nul
+xcopy /E /Y preferences\* ..\Firefox\App\Firefox\ > nul
 
 if "%locale%"=="ru" (
 	echo Загрузка I2Pd

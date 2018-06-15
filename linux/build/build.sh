@@ -8,7 +8,7 @@
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="52.7.2esr"
+version="60.0.2esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -82,16 +82,15 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
 # Done!
 
 echo "Downloading language packs..."
-curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605634/russian_ru_language_pack-52.0-fx.xpi?src=version-history
-curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/605596/english_us_language_pack-52.0-fx.xpi?src=version-history
+curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978562/russian_ru_language_pack-60.0buildid20180605171542-an+fx.xpi
+curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/806790/noscript_security_suite-5.1.8.3-fx+sm.xpi
+curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/972162/noscript_security_suite-10.1.8.2-an+fx.xpi
 
 echo "Adding standard configs..."
 cp profile/* ../data/
-mkdir -p ../app/browser/defaults
-cp -r preferences ../app/browser/defaults/
+cp -r preferences ../app/
 
 echo '#!/bin/sh' > "../${application}-portable"
 echo 'dir=${0%/*}' >> "../${application}-portable"
