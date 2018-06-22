@@ -6,6 +6,12 @@
 #
 # See full license text in LICENSE file at top of project tree
 
+dir=${0%/*}
+if [ "$dir" = "$0" ]; then
+  dir="."
+fi
+cd $dir
+
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)')
 version="60.0.2esr"
@@ -77,17 +83,14 @@ rm "$file"
 
 ## TODO: check on linux before make that changes
 # Deleting some not needed files
-#rm ../app/crashreporter*
-#rm ../app/removed-files
-#rm ../app/run-mozilla.sh
-#rm ../app/update*
-#rm ../app/browser/blocklist.xml
-#rm -r ../app/dictionaries
+rm -r ../FirefoxESR.app/Contents/Library
+rm -r ../FirefoxESR.app/Contents/MacOS/crashreporter.app
+rm -r ../FirefoxESR.app/Contents/MacOS/updater.app
+rm ../FirefoxESR.app/Contents/Resources/removed-files
+rm ../FirefoxESR.app/Contents/Resources/update*
 # And edit some places
-#sed -i 's/Enabled=1/Enabled=0/g' ../app/application.ini
-#sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
-# sed -i 's/Enabled=1/Enabled=0/g' ../app/webapprt/webapprt.ini
-# sed -i 's/ServerURL=.*/ServerURL=-/' ../app/webapprt/webapprt.ini
+sed -i '' -e "s/Enabled=1/Enabled=0/g" "../FirefoxESR.app/Contents/Resources/application.ini"
+sed -i '' -e "s/ServerURL=.*/ServerURL=-/" "../FirefoxESR.app/Contents/Resources/application.ini"
 # Done!
 
 echo "Downloading language packs..."
@@ -99,14 +102,15 @@ curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe
 
 echo "Adding standard configs..."
 cp profile/* ../data/
-cp -r preferences ../FirefoxESR.app/Contents/Resources/
+cp -r preferences/* ../FirefoxESR.app/Contents/Resources/
 
 echo '#!/bin/sh' > "../i2pdbrowser-portable"
 echo 'dir=${0%/*}' >> "../i2pdbrowser-portable"
 echo 'if [ "$dir" = "$0" ]; then' >> "../i2pdbrowser-portable"
 echo '  dir="."' >> "../i2pdbrowser-portable"
 echo 'fi' >> "../i2pdbrowser-portable"
-echo 'FirefoxESR.app/Contents/MacOS/firefox -profile ../data -no-remote' >> "../i2pdbrowser-portable"
+echo 'cd $dir' >> "../i2pdbrowser-portable"
+echo 'FirefoxESR.app/Contents/MacOS/firefox -profile data -no-remote' >> "../i2pdbrowser-portable"
 
 chmod +x "../i2pdbrowser-portable"
 
@@ -116,5 +120,6 @@ mkdir ../i2pd
 tar xfz i2pd_${i2pdversion}_osx.tar.gz -C ../i2pd
 mv ../i2pd/i2pd ../i2pd/i2pd-osx
 cp -rf i2pd ../i2pd
+rm "i2pd_${i2pdversion}_osx.tar.gz"
 
 echo "... finished"
