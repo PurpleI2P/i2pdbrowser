@@ -14,8 +14,8 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)')
-version="60.0.2esr"
-i2pdversion="2.18.0"
+version="60.1.0esr"
+i2pdversion="2.19.0"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
