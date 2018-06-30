@@ -6,6 +6,12 @@
 #
 # See full license text in LICENSE file at top of project tree
 
+dir=${0%/*}
+if [ "$dir" = "$0" ]; then
+  dir="."
+fi
+cd $dir
+
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
 version="60.0.2esr"
@@ -90,7 +96,7 @@ curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232
 
 echo "Adding standard configs..."
 cp profile/* ../data/
-cp -r preferences ../app/
+cp -r preferences/* ../app/
 
 echo '#!/bin/sh' > "../${application}-portable"
 echo 'dir=${0%/*}' >> "../${application}-portable"
