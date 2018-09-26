@@ -7,8 +7,8 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=60.1.0
-set I2Pdversion=2.19.0
+set FFversion=60.2.1
+set I2Pdversion=2.20.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -75,8 +75,27 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading NoScript extension
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/972162/noscript_security_suite-10.1.8.2-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/1077146/noscript_security_suite-10.1.9.6-an+fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+
+REM echo.
+REM if "%locale%"=="ru" (
+REM 	echo Загрузка дополнения CanvasBlocker
+REM ) else (
+REM 	echo Downloading CanvasBlocker extension
+REM )
+REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\CanvasBlocker@kkapsner.de.xpi https://addons.mozilla.org/firefox/downloads/file/1086424/canvasblocker-0.5.4-an+fx.xpi
+REM if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+
+
+REM echo.
+REM if "%locale%"=="ru" (
+REM 	echo Загрузка дополнения Privacy Badger
+REM ) else (
+REM 	echo Downloading Privacy Badger extension
+REM )
+REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\jid1-MnnxcxisBPnSXQ-eff@jetpack.xpi https://www.eff.org/files/privacy-badger-latest.xpi
+REM if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
