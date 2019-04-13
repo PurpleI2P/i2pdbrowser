@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2018, The PurpleI2P Project
-#
+# Copyright (c) 2013-2019, The PurpleI2P Project
 # This file is part of Purple I2P project and licensed under BSD3
-#
 # See full license text in LICENSE file at top of project tree
 
 dir=${0%/*}
@@ -14,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="60.1.0esr"
+version="60.6.1esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -75,10 +73,20 @@ mkdir ../data
 
 # Deleting some not needed files
 rm ../app/crashreporter*
+rm ../app/minidump-analyzer
+rm ../app/pingsender
+rm ../app/precomplete
 rm ../app/removed-files
-rm ../app/run-mozilla.sh
 rm ../app/update*
 rm ../app/browser/blocklist.xml
+rm ../app/browser/crashreporter-override.ini
+rm ../app/browser/features/aushelper@mozilla.org.xpi
+rm ../app/browser/features/firefox@getpocket.com.xpi
+rm ../app/browser/features/followonsearch@mozilla.com.xpi
+rm ../app/browser/features/formautofill@mozilla.org.xpi
+rm ../app/browser/features/jaws-esr@mozilla.org.xpi
+rm ../app/browser/features/onboarding@mozilla.org.xpi
+rm ../app/browser/features/screenshots@mozilla.org.xpi
 rm -r ../app/dictionaries
 # And edit some places
 sed -i 's/Enabled=1/Enabled=0/g' ../app/application.ini
