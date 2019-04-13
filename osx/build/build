@@ -11,7 +11,7 @@ fi
 cd $dir
 
 arch=$(uname -m)
-language=$(osascript -e 'user locale of (get system info)')
+language=$(osascript -e 'user locale of (get system info)' | sed -e 's/_/-/g')
 version="60.6.1esr"
 i2pdversion="2.24.0"
 
@@ -31,7 +31,7 @@ filepath="mac/${language}/${file}"
 echo "Downloading $application..."
 
 tmpfilepath=$(echo $filepath | sed 's/ /%20/g')
-curl -L -f -# -O "${ftpmirror}/${tmpfilepath}"
+curl -L -f -# -o "${file}" "${ftpmirror}/${tmpfilepath}"
 if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	echo "[TRY 2] I'll try downloading Firefox with shorter language code";
 	language=$(echo $language | cut -c-2)
@@ -45,7 +45,7 @@ if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 		# re-create lang variable
 		filepath="mac/$language/$file"
 		tmpfilepath=$(echo $filepath | sed 's/ /%20/g')
-		curl -L -f -# -O "${ftpmirror}/${tmpfilepath}"
+		curl -L -f -# -o "${file}" "${ftpmirror}/${tmpfilepath}"
 		if [ $? -ne 0 ]; then # After that i can say only that user haven't internet connection
 			echo "[Error] Can't download file. Check your internet connectivity."
 			exit 1;
@@ -83,7 +83,18 @@ rm "$file"
 # Deleting some not needed files
 rm -r ../FirefoxESR.app/Contents/Library
 rm -r ../FirefoxESR.app/Contents/MacOS/crashreporter.app
+rm ../FirefoxESR.app/Contents/MacOS/pingsender
 rm -r ../FirefoxESR.app/Contents/MacOS/updater.app
+rm ../FirefoxESR.app/Contents/Resources/browser/blocklist.xml
+rm ../FirefoxESR.app/Contents/Resources/browser/crashreporter-override.ini
+rm ../FirefoxESR.app/Contents/Resources/browser/features/aushelper@mozilla.org.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/firefox@getpocket.com.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/followonsearch@mozilla.com.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/formautofill@mozilla.org.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/jaws-esr@mozilla.org.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/onboarding@mozilla.org.xpi
+rm ../FirefoxESR.app/Contents/Resources/browser/features/screenshots@mozilla.org.xpi
+rm ../FirefoxESR.app/Contents/Resources/precomplete
 rm ../FirefoxESR.app/Contents/Resources/removed-files
 rm ../FirefoxESR.app/Contents/Resources/update*
 # And edit some places
@@ -117,7 +128,7 @@ curl -L -f -# -O "https://github.com/PurpleI2P/i2pd/releases/download/${i2pdvers
 mkdir ../i2pd
 tar xfz i2pd_${i2pdversion}_osx.tar.gz -C ../i2pd
 mv ../i2pd/i2pd ../i2pd/i2pd-osx
-cp -rf i2pd ../i2pd
+cp -rf i2pd/* ../i2pd
 rm "i2pd_${i2pdversion}_osx.tar.gz"
 
 echo "... finished"
