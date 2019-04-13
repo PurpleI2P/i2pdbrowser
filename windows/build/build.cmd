@@ -1,14 +1,14 @@
 @echo off
 
-REM Copyright (c) 2013-2018, The PurpleI2P Project
+REM Copyright (c) 2013-2019, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=60.2.1
-set I2Pdversion=2.20.0
+set FFversion=60.6.1
+set I2Pdversion=2.24.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -43,12 +43,26 @@ if "%locale%"=="ru" (
 del /Q firefox.exe
 ren ..\Firefox\App\core Firefox
 del /Q ..\Firefox\App\setup.exe
-rmdir /S /Q ..\Firefox\App\Firefox\dictionaries
-rmdir /S /Q ..\Firefox\App\Firefox\uninstall
 del /Q ..\Firefox\App\Firefox\browser\blocklist.xml
 del /Q ..\Firefox\App\Firefox\browser\crashreporter-override.ini
+del /Q ..\Firefox\App\Firefox\browser\features\aushelper@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\firefox@getpocket.com.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\followonsearch@mozilla.com.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\formautofill@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\jaws-esr@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\onboarding@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\screenshots@mozilla.org.xpi
+rmdir /S /Q ..\Firefox\App\Firefox\dictionaries
+rmdir /S /Q ..\Firefox\App\Firefox\gmp-clearkey
+rmdir /S /Q ..\Firefox\App\Firefox\uninstall
+del /Q ..\Firefox\App\Firefox\Accessible*.*
 del /Q ..\Firefox\App\Firefox\crashreporter.*
+del /Q ..\Firefox\App\Firefox\*.sig
+del /Q ..\Firefox\App\Firefox\*.chk
+del /Q ..\Firefox\App\Firefox\IA2Marshal.dll
 del /Q ..\Firefox\App\Firefox\maintenanceservice*.*
+del /Q ..\Firefox\App\Firefox\minidump-analyzer.exe
+del /Q ..\Firefox\App\Firefox\ucrtbase.dll
 del /Q ..\Firefox\App\Firefox\update*.*
 
 if "%locale%"=="ru" (

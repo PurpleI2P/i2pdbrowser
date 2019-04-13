@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2018, The PurpleI2P Project
-#
+# Copyright (c) 2013-2019, The PurpleI2P Project
 # This file is part of Purple I2P project and licensed under BSD3
-#
 # See full license text in LICENSE file at top of project tree
 
 dir=${0%/*}
@@ -14,8 +12,8 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)')
-version="60.1.0esr"
-i2pdversion="2.20.0"
+version="60.6.1esr"
+i2pdversion="2.24.0"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
