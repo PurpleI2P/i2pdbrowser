@@ -15,3 +15,6 @@ Since 1.2.6 pre-built version for Windows is excluded from repository, but relea
 ### TODO:
 * English version of Windows how-to for using it.
 * Russian translation of README, both this one and the one for /windows
+
+### Release signing
+Release hashsums signed with key [66f6c87b98ebcfe2](http://keyserver.ubuntu.com/pks/lookup?op=vindex&search=0x66F6C87B98EBCFE2)
