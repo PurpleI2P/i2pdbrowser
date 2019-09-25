@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="60.7.1esr"
+version="60.9.0esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -100,7 +100,7 @@ curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi h
 curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3028550/noscript_security_suite-10.6.3-an+fx.xpi
+curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3383315/noscript_security_suite-11.0.3-an+fx.xpi
 
 echo "Adding standard configs..."
 cp profile/* ../data/
