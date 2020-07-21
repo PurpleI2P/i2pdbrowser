@@ -8,7 +8,7 @@ setlocal enableextensions
 
 set CURL=%~dp0curl.exe
 set FFversion=60.9.0
-set I2Pdversion=2.30.0
+set I2Pdversion=2.32.1
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
