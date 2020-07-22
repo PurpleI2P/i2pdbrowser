@@ -80,14 +80,7 @@ rm ../app/removed-files
 rm ../app/update*
 rm ../app/browser/blocklist.xml
 rm ../app/browser/crashreporter-override.ini
-rm ../app/browser/features/aushelper@mozilla.org.xpi
-rm ../app/browser/features/firefox@getpocket.com.xpi
-rm ../app/browser/features/followonsearch@mozilla.com.xpi
-rm ../app/browser/features/formautofill@mozilla.org.xpi
-rm ../app/browser/features/jaws-esr@mozilla.org.xpi
-rm ../app/browser/features/onboarding@mozilla.org.xpi
-rm ../app/browser/features/screenshots@mozilla.org.xpi
-rm -r ../app/dictionaries
+rm ../app/browser/features/*.xpi
 # And edit some places
 sed -i 's/Enabled=1/Enabled=0/g' ../app/application.ini
 sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
@@ -96,8 +89,9 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
 # Done!
 
 echo "Downloading language packs..."
-curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978562/russian_ru_language_pack-60.0buildid20180605171542-an+fx.xpi
-curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
+mkdir -p ../app/browser/extensions/
+curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3379579/russian_ru_language_pack-68.0buildid20190813150448-fx.xpi
+curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3379494/english_us_language_pack-68.0buildid20190813150448-fx.xpi
 
 echo "Downloading NoScript extension..."
 curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3606660/noscript_security_suite-11.0.34-an+fx.xpi
