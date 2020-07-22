@@ -107,7 +107,7 @@ curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpac
 curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi "https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi"
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi "https://addons.mozilla.org/firefox/downloads/file/3383315/noscript_security_suite-11.0.3-an+fx.xpi"
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi "https://addons.mozilla.org/firefox/downloads/file/3606660/noscript_security_suite-11.0.34-an+fx.xpi"
 
 echo "Adding standard configs..."
 cp profile/* ../data/
