@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)' | sed -e 's/_/-/g')
-version="60.9.0esr"
+version="68.10.0esr"
 i2pdversion="2.32.1"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
