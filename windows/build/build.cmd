@@ -45,14 +45,11 @@ ren ..\Firefox\App\core Firefox
 del /Q ..\Firefox\App\setup.exe
 del /Q ..\Firefox\App\Firefox\browser\blocklist.xml
 del /Q ..\Firefox\App\Firefox\browser\crashreporter-override.ini
-del /Q ..\Firefox\App\Firefox\browser\features\aushelper@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\firefox@getpocket.com.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\followonsearch@mozilla.com.xpi
 del /Q ..\Firefox\App\Firefox\browser\features\formautofill@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\jaws-esr@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\onboarding@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\fxmonitor@mozilla.org.xpi
 del /Q ..\Firefox\App\Firefox\browser\features\screenshots@mozilla.org.xpi
-rmdir /S /Q ..\Firefox\App\Firefox\dictionaries
+del /Q ..\Firefox\App\Firefox\browser\features\webcompat@mozilla.org.xpi
+del /Q ..\Firefox\App\Firefox\browser\features\webcompat-reporter@mozilla.org.xpi
 rmdir /S /Q ..\Firefox\App\Firefox\gmp-clearkey
 rmdir /S /Q ..\Firefox\App\Firefox\uninstall
 del /Q ..\Firefox\App\Firefox\Accessible*.*
@@ -78,9 +75,10 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading language packs
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978562/russian_ru_language_pack-60.0buildid20180605171542-an+fx.xpi
+mkdir ..\Firefox\App\Firefox\browser\extensions > nul
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3379579/russian_ru_language_pack-68.0buildid20190813150448-fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3379494/english_us_language_pack-68.0buildid20190813150448-fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
@@ -98,7 +96,7 @@ REM 	echo Загрузка дополнения CanvasBlocker
 REM ) else (
 REM 	echo Downloading CanvasBlocker extension
 REM )
-REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\CanvasBlocker@kkapsner.de.xpi https://addons.mozilla.org/firefox/downloads/file/1086424/canvasblocker-0.5.4-an+fx.xpi
+REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\CanvasBlocker@kkapsner.de.xpi https://addons.mozilla.org/firefox/downloads/file/3586373/canvasblocker-1.3-an+fx.xpi
 REM if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 
