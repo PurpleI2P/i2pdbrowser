@@ -1,0 +1,96 @@
+{
+  "policies": {
+    "AppUpdateURL": "http://127.0.0.1/",
+    "CaptivePortal": false,
+    "Certificates": {
+      "ImportEnterpriseRoots": false
+    },
+    "DNSOverHTTPS": {
+      "Enabled": false,
+      "Locked": true
+    },
+    "DisableAppUpdate": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxScreenshots": true,
+    "DisableFirefoxStudies": true,
+    "DisablePasswordReveal": true,
+    "DisablePocket": true,
+    "DisableProfileImport": true,
+    "DisableProfileRefresh": true,
+    "DisableSafeMode": true,
+    "DisableSetDesktopBackground": true,
+    "DisableSystemAddonUpdate": true,
+    "DisableTelemetry": true,
+    "DontCheckDefaultBrowser": true,
+    "ExtensionUpdate": false,
+    "Extensions": {
+      "Locked": [
+        "73a6fe31-595d-460b-a920-fcc0f8843232"
+      ]
+    },
+    "FirefoxHome": {
+      "Highlights": false,
+      "Pocket": false,
+      "Search": true,
+      "Snippets": false,
+      "TopSites": true
+    },
+    "FlashPlugin": {
+      "Default": false
+    },
+    "NetworkPrediction": false,
+    "NoDefaultBookmarks": true,
+    "OfferToSaveLoginsDefault": false,
+    "OverrideFirstRunPage": "http://i2pd.i2p/",
+    "OverridePostUpdatePage": "",
+    "Permissions": {
+      "Camera": {
+        "BlockNewRequests": true
+      },
+      "Location": {
+        "BlockNewRequests": true
+      },
+      "Microphone": {
+        "BlockNewRequests": true
+      }
+    },
+    "PopupBlocking": {
+      "Default": true
+    },
+    "Preferences": {
+      "browser.cache.disk.enable": true,
+      "browser.fixup.dns_first_for_single_words": false,
+      "browser.search.update": false,
+      "browser.tabs.warnOnClose": false,
+      "browser.urlbar.suggest.bookmark": true,
+      "browser.urlbar.suggest.history": true,
+      "browser.urlbar.suggest.openpage": true,
+      "datareporting.policy.dataSubmissionPolicyBypassNotification": true,
+      "dom.disable_window_flip": true,
+      "dom.disable_window_move_resize": true,
+      "dom.event.contextmenu.enabled": false,
+      "network.IDN_show_punycode": false,
+      "network.dns.disableIPv6": true,
+      "places.history.enabled": true,
+      "privacy.file_unique_origin": true
+    },
+    "PromptForDownloadLocation": true,
+    "Proxy": {
+      "AutoLogin": true,
+      "FTPProxy": "127.0.0.1:4444",
+      "HTTPProxy": "127.0.0.1:4444",
+      "Mode": "manual",
+      "SOCKSVersion": 5,
+      "SSLProxy": "127.0.0.1:4444",
+      "UseHTTPProxyForAllProtocols": false,
+      "UseProxyForDNS": true
+    },
+    "SearchBar": "unified",
+    "SearchSuggestEnabled": false,
+    "SupportMenu": {
+      "Title": "Ilita IRC",
+      "URL": "http://irc.r4sas.i2p/?nick=WebClient...&channels=dev%2Cen%2Cru&prompt=1&uio=OT10cnVlde"
+    }
+  }
+}
