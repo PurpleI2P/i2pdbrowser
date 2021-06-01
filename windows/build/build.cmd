@@ -1,14 +1,14 @@
 @echo off
 
-REM Copyright (c) 2013-2019, The PurpleI2P Project
+REM Copyright (c) 2013-2020, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=60.9.0
-set I2Pdversion=2.32.1
+set FFversion=78.11.0
+set I2Pdversion=2.38.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -43,44 +43,61 @@ if "%locale%"=="ru" (
 del /Q firefox.exe
 ren ..\Firefox\App\core Firefox
 del /Q ..\Firefox\App\setup.exe
-del /Q ..\Firefox\App\Firefox\browser\blocklist.xml
 del /Q ..\Firefox\App\Firefox\browser\crashreporter-override.ini
-del /Q ..\Firefox\App\Firefox\browser\features\aushelper@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\firefox@getpocket.com.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\followonsearch@mozilla.com.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\formautofill@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\jaws-esr@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\onboarding@mozilla.org.xpi
-del /Q ..\Firefox\App\Firefox\browser\features\screenshots@mozilla.org.xpi
-rmdir /S /Q ..\Firefox\App\Firefox\dictionaries
+rmdir /S /Q ..\Firefox\App\Firefox\browser\features
 rmdir /S /Q ..\Firefox\App\Firefox\gmp-clearkey
 rmdir /S /Q ..\Firefox\App\Firefox\uninstall
 del /Q ..\Firefox\App\Firefox\Accessible*.*
+del /Q ..\Firefox\App\Firefox\application.ini
 del /Q ..\Firefox\App\Firefox\crashreporter.*
 del /Q ..\Firefox\App\Firefox\*.sig
-del /Q ..\Firefox\App\Firefox\*.chk
 del /Q ..\Firefox\App\Firefox\IA2Marshal.dll
 del /Q ..\Firefox\App\Firefox\maintenanceservice*.*
 del /Q ..\Firefox\App\Firefox\minidump-analyzer.exe
+del /Q ..\Firefox\App\Firefox\precomplete
+del /Q ..\Firefox\App\Firefox\removed-files
 del /Q ..\Firefox\App\Firefox\ucrtbase.dll
 del /Q ..\Firefox\App\Firefox\update*.*
 
-if "%locale%"=="ru" (
-	echo Отключение отчетов о падении
-) else (
-	echo Disabling crash reports
-)
-sed -i "s/Enabled=1/Enabled=0/g" ..\Firefox\App\Firefox\application.ini
-sed -i "s/ServerURL=.*/ServerURL=-/" ..\Firefox\App\Firefox\application.ini
+mkdir ..\Firefox\App\Firefox\browser\extensions > nul
+echo OK!
 
+echo.
+if "%locale%"=="ru" (
+	echo Патчим внутренние файлы браузера для отключения навязчивых запросов
+) else (
+	echo Patching browser internal files to disable annoying external requests
+)
+
+7z -bso0 -y x ..\Firefox\App\Firefox\omni.ja -o..\Firefox\App\tmp > nul 2>&1
+
+REM Patching them
+sed -i "s/\"https\:\/\/firefox\.settings\.services\.mozilla\.com\/v1\"$/gServerURL/" ..\Firefox\App\tmp\modules\services-settings\Utils.jsm
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 1/1)
+
+REM Backing up old omni.ja
+ren ..\Firefox\App\Firefox\omni.ja omni.ja.bak
+
+REM Repacking patched files
+7z a -mx0 -tzip ..\Firefox\App\Firefox\omni.ja -r ..\Firefox\App\tmp\* > nul
+
+REM Removing temporary files
+rmdir /S /Q ..\Firefox\App\tmp
+echo OK!
+
+echo.
 if "%locale%"=="ru" (
 	echo Загрузка языковых пакетов
 ) else (
 	echo Downloading language packs
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978562/russian_ru_language_pack-60.0buildid20180605171542-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/978493/english_us_language_pack-60.0buildid20180605171542-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3498005/english_united_states_dictionary-68.0.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
@@ -89,27 +106,8 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading NoScript extension
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3383315/noscript_security_suite-11.0.3-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3625174/noscript_security_suite-11.0.38-an+fx.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-
-REM echo.
-REM if "%locale%"=="ru" (
-REM 	echo Загрузка дополнения CanvasBlocker
-REM ) else (
-REM 	echo Downloading CanvasBlocker extension
-REM )
-REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\CanvasBlocker@kkapsner.de.xpi https://addons.mozilla.org/firefox/downloads/file/1086424/canvasblocker-0.5.4-an+fx.xpi
-REM if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-
-
-REM echo.
-REM if "%locale%"=="ru" (
-REM 	echo Загрузка дополнения Privacy Badger
-REM ) else (
-REM 	echo Downloading Privacy Badger extension
-REM )
-REM "%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\jid1-MnnxcxisBPnSXQ-eff@jetpack.xpi https://www.eff.org/files/privacy-badger-latest.xpi
-REM if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
@@ -119,9 +117,16 @@ if "%locale%"=="ru" (
 )
 mkdir ..\Firefox\App\DefaultData\profile\ > nul
 copy /Y profile\* ..\Firefox\App\DefaultData\profile\ > nul
+if "%locale%"=="ru" (
+	copy /Y profile-ru\* ..\Firefox\App\DefaultData\profile\ > nul
+) else (
+	copy /Y profile-en\* ..\Firefox\App\DefaultData\profile\ > nul
+)
 copy /Y firefox-portable\* ..\Firefox\ > nul
 xcopy /E /Y preferences\* ..\Firefox\App\Firefox\ > nul
+echo OK!
 
+echo.
 if "%locale%"=="ru" (
 	echo Загрузка I2Pd
 ) else (
