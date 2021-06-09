@@ -58,7 +58,7 @@ if [ $? -ne 0 ]; then # Not found error, trying to cut language variable
 	fi
 fi
 
-if [ ! -f $file ]; then
+if [ ! -f "$file" ]; then
 	echo "[Error] Can't find downloaded file. Does it really exist?"
 	exit 1
 fi
@@ -74,8 +74,6 @@ else
 	echo "Checksum correct."
 	rm SHA512SUMS
 fi
-
-exit
 
 echo "Attaching image and copying files..."
 hdiutil attach "$file"
