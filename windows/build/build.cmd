@@ -1,14 +1,14 @@
 @echo off
 
-REM Copyright (c) 2013-2020, The PurpleI2P Project
+REM Copyright (c) 2013-2021, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=78.11.0
-set I2Pdversion=2.38.0
+set FFversion=78.14.0
+set I2Pdversion=2.39.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
