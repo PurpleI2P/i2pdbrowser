@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2021, The PurpleI2P Project
+# Copyright (c) 2013-2022, The PurpleI2P Project
 # This file is part of Purple I2P project and licensed under BSD3
 # See full license text in LICENSE file at top of project tree
 
@@ -12,8 +12,8 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)' | sed -e 's/_/-/g')
-version="78.14.0esr"
-i2pdversion="2.39.0"
+version="78.15.0esr"
+i2pdversion="2.41.0"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
@@ -106,10 +106,10 @@ mkdir ../FirefoxESR.app/Contents/Resources/browser/extensions
 curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
 curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
 curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3498005/english_united_states_dictionary-68.0.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3658646/english_united_states_dictionary-78.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3625174/noscript_security_suite-11.0.38-an+fx.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3926354/noscript_security_suite-11.4.1-an+fx.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../FirefoxESR.app/Contents/Resources/
