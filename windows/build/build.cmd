@@ -83,7 +83,7 @@ REM Repacking patched files
 
 REM Removing temporary files
 rmdir /S /Q ..\Firefox\App\tmp
-rm ..\Firefox\App\Firefox\omni.ja.bak
+del ..\Firefox\App\Firefox\omni.ja.bak
 echo OK!
 
 echo.
