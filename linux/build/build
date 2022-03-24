@@ -123,7 +123,7 @@ echo 'if [ "$dir" = "$0" ]; then' >> "../${application}-portable"
 echo '	dir="."' >> "../${application}-portable"
 echo 'fi' >> "../${application}-portable"
 echo 'cd "$dir/app"' >> "../${application}-portable"
-echo './firefox -profile ../data -no-remote' >> "../${application}-portable"
+echo './firefox -profile ../data -no-remote &' >> "../${application}-portable"
 
 chmod +x "../$application-portable"
 echo ... finished
