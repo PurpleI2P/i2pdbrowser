@@ -16,7 +16,7 @@ version="78.15.0esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
-if [ "$arch" == "amd64" ]; then # OpenBSD (and maybe FreeBSD) returns amd64 as architecture instead x86_64
+if [ "$arch" = "amd64" ]; then # OpenBSD (and maybe FreeBSD) returns amd64 as architecture instead x86_64
 	arch=x86_64
 fi
 
