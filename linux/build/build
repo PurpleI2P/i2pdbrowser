@@ -77,53 +77,48 @@ fi
 echo "Extracting archive, please wait..."
 tar xfj $file
 rm $file
-mv $application ../app
-mkdir ../data
+mv $application ../browser
+mkdir ../browser/data
 
 # Deleting some not needed files
-rm ../app/crashreporter*
-rm ../app/minidump-analyzer
-rm ../app/pingsender
-rm ../app/precomplete
-rm ../app/removed-files
-rm ../app/update*
-rm ../app/Throbber-small.gif
-rm ../app/browser/crashreporter-override.ini
-rm ../app/browser/features/formautofill@mozilla.org.xpi
-rm ../app/browser/features/screenshots@mozilla.org.xpi
-rm -r ../app/icons
+rm ../browser/crashreporter*
+rm ../browser/minidump-analyzer
+rm ../browser/pingsender
+rm ../browser/precomplete
+rm ../browser/removed-files
+rm ../browser/update*
+rm ../browser/Throbber-small.gif
+rm ../browser/browser/crashreporter-override.ini
+rm ../browser/browser/features/formautofill@mozilla.org.xpi
+rm ../browser/browser/features/screenshots@mozilla.org.xpi
+rm -r ../browser/icons
 # And edit some places
-sed -i 's/Enabled=1/Enabled=0/g' ../app/application.ini
-sed -i 's/ServerURL=.*/ServerURL=-/' ../app/application.ini
+sed -i 's/Enabled=1/Enabled=0/g' ../browser/application.ini
+sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 # Done!
 
 echo "Downloading language packs..."
-mkdir ../app/browser/extensions
-curl -L -f -# -o ../app/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
-curl -L -f -# -o ../app/browser/extensions/ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
-curl -L -f -# -o ../app/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
-curl -L -f -# -o ../app/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3658646/english_united_states_dictionary-78.0.xpi
+mkdir ../browser/browser/extensions
+curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
+curl -L -f -# -o ../browser/browser/extensions/ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
+curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3658646/english_united_states_dictionary-78.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../app/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3926354/noscript_security_suite-11.4.1-an+fx.xpi
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3926354/noscript_security_suite-11.4.1-an+fx.xpi
 
 echo "Adding standard configs..."
-cp -r preferences/* ../app/
-cp -r profile/* ../data/
+cp -r preferences/* ../browser/
+cp -r profile/* ../browser/data/
 
 if [ "$language" = "ru" ]; then
-	cp -r profile-ru/* ../data/
+	cp -r profile-ru/* ../browser/data/
 else
-	cp -r profile-en/* ../data/
+	cp -r profile-en/* ../browser/data/
 fi
 
-echo '#!/bin/sh' > "../${application}-portable"
-echo 'dir=${0%/*}' >> "../${application}-portable"
-echo 'if [ "$dir" = "$0" ]; then' >> "../${application}-portable"
-echo '	dir="."' >> "../${application}-portable"
-echo 'fi' >> "../${application}-portable"
-echo 'cd "$dir/app"' >> "../${application}-portable"
-echo './firefox -profile ../data -no-remote &' >> "../${application}-portable"
+echo "Copying Desktop launch scripts..."
+cp -r scripts/* ../browser/
+cp scripts/start-i2pd-browser.desktop ../
 
-chmod +x "../$application-portable"
 echo ... finished

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+I2PDB_START_PROG="$(grep '^X-I2PdBrowser-ExecShell' $1 | tail -1 | sed 's/^X-I2PdBrowser-ExecShell=//' | sed 's/%.//')"
+
+shift
+
+if [ "$#" -ge 1 ]
+then
+  echo "Launching '${I2PDB_START_PROG} $@'..."
+else
+  echo "Launching '${I2PDB_START_PROG}'..."
+fi
+
+${I2PDB_START_PROG} "$@"
