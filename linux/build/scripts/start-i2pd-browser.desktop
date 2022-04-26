@@ -1,4 +1,4 @@
-#!/usr/bin/env ./Browser/execdesktop
+#!/usr/bin/env ./browser/execdesktop
 #
 # This file is a self-modifying .desktop file that can be run from the shell.
 # It preserves arguments and environment for the start-tor-browser script.
