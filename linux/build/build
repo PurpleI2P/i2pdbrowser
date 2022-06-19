@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="78.15.0esr"
+version="91.9.1esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -99,13 +99,13 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 
 echo "Downloading language packs..."
 mkdir ../browser/browser/extensions
-curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
-curl -L -f -# -o ../browser/browser/extensions/ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
-curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
-curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3658646/english_united_states_dictionary-78.0.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829308/russian_ru_language_pack-91.0buildid20210823123856.xpi
+curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3957330/2696307-1.35.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829281/english_us_language_pack-91.0buildid20210823123856.xpi
+curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3893473/us_english_dictionary-91.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3926354/noscript_security_suite-11.4.1-an+fx.xpi
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3954910/noscript-11.4.6.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../browser/

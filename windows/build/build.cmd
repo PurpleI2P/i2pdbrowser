@@ -7,8 +7,8 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=78.15.0
-set I2Pdversion=2.41.0
+set FFversion=91.9.1esr
+set I2Pdversion=2.42.1
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -25,7 +25,7 @@ if "%locale%"=="ru" (
 	echo Downloading Firefox ESR installer
 )
 
-"%CURL%" -L -f -# -o firefox.exe https://ftp.mozilla.org/pub/firefox/releases/%FFversion%esr/%xOS%/%locale%/Firefox%%20Setup%%20%FFversion%esr.exe %$X%
+"%CURL%" -L -f -# -o firefox.exe https://ftp.mozilla.org/pub/firefox/releases/%FFversion%/%xOS%/%locale%/Firefox%%20Setup%%20%FFversion%.exe %$X%
 if errorlevel 1 (
 	echo ERROR:%ErrorLevel%
 	pause
@@ -92,13 +92,13 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading language packs
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605589/russian_ru_language_pack-78.0buildid20200708170202-fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829308/russian_ru_language_pack-91.0buildid20210823123856.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\ru@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/1163927/russian_spellchecking_dictionary-0.4.5.1webext.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3957330/2696307-1.35.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3605503/english_us_language_pack-78.0buildid20200708170202-fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829281/english_us_language_pack-91.0buildid20210823123856.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3658646/english_united_states_dictionary-78.0.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3893473/us_english_dictionary-91.0.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
@@ -107,7 +107,7 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading NoScript extension
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3926354/noscript_security_suite-11.4.1-an+fx.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3954910/noscript-11.4.6.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
