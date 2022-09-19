@@ -7,8 +7,8 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=91.12.0esr
-set I2Pdversion=2.42.1
+set FFversion=102.3.0esr
+set I2Pdversion=2.43.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -73,7 +73,9 @@ if "%locale%"=="ru" (
 
 REM Patching them
 sed -i "s/\"https\:\/\/firefox\.settings\.services\.mozilla\.com\/v1\"$/gServerURL/" ..\Firefox\App\tmp\modules\services-settings\Utils.jsm
-if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 1/1)
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 1/2)
+sed -i "s/\"https\:\/\/firefox\.settings\.services\.mozilla\.com\/v1\",$/\"\",/" ..\Firefox\App\tmp\modules\AppConstants.jsm
+if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 2/2)
 
 REM Backing up old omni.ja
 ren ..\Firefox\App\Firefox\omni.ja omni.ja.bak

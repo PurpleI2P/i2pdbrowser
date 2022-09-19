@@ -11,9 +11,9 @@ What works now
 
 How to use
 -----
-1. Build pre-configured Firefox using script `build.sh` from `build` folder
+1. Build pre-configured Firefox using script `./build` from `build` folder
 2. Run I2Pd by executing `./i2pd` from `i2pd` folder
-3. Run Firefox by executing `./firefox-portable`
+3. Run Firefox by executing `./start-i2pd-browser.desktop`
 
 Additional info
 -----
