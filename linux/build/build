@@ -99,13 +99,13 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 
 echo "Downloading language packs..."
 mkdir ../browser/browser/extensions
-curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829308/russian_ru_language_pack-91.0buildid20210823123856.xpi
-curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3957330/2696307-1.35.xpi
-curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3829281/english_us_language_pack-91.0buildid20210823123856.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971589/russian_ru_language_pack-102.0.1buildid20220705.093820.xpi
+curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3997957/2696307-1.41.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971625/english_us_language_pack-102.0.1buildid20220705.093820.xpi
 curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3893473/us_english_dictionary-91.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/3954910/noscript-11.4.6.xpi
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4002416/noscript-11.4.11.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../browser/
