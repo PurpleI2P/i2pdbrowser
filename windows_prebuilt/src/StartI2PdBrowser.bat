@@ -3,7 +3,9 @@ REM Copyright (c) 2013-2019, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
-title Starting I2Pd Browser 1.2.8
+FOR /F "tokens=*" %%t IN ('git describe --tags') do (SET version=%%t)
+
+title Starting I2Pd Browser %version%
 set $pause=ping.exe 0.0.0.0 -n
 set $cd=%CD%
 ver| find "6." >nul && set $pause=timeout.exe /t
@@ -38,6 +40,6 @@ cd %$cd%
 exit /b 0
 
 :EchoWithoutCrLf
-    
+
     <nul set /p strTemp=%~1
     exit /b 0
