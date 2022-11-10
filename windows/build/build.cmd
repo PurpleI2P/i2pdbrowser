@@ -14,10 +14,10 @@ call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="ru" (
-	echo ‘¡®àª  I2Pd Browser Portable
-	echo Ÿ§ëª ¡à ã§¥à : %locale%,  àå¨â¥ªâãà : %xOS%
+	echo â€˜Â¡Â®Ã ÂªÂ  I2Pd Browser Portable
+	echo Å¸Â§Ã«Âª Â¡Ã Â Ã£Â§Â¥Ã Â : %locale%, Â Ã Ã¥Â¨Ã¢Â¥ÂªÃ¢Ã£Ã Â : %xOS%
 	echo.
-	echo ‡ £àã§ª  ãáâ ­®¢é¨ª  Firefox ESR
+	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Ã£Ã¡Ã¢Â Â­Â®Â¢Ã©Â¨ÂªÂ  Firefox ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo Browser locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="ru" (
-	echo  á¯ ª®¢ª  ãáâ ­®¢é¨ª  ¨ ã¤ «¥­¨¥ ­¥ ­ã¦­ëå ä ©«®¢
+	echo ÂÂ Ã¡Â¯Â ÂªÂ®Â¢ÂªÂ  Ã£Ã¡Ã¢Â Â­Â®Â¢Ã©Â¨ÂªÂ  Â¨ Ã£Â¤Â Â«Â¥Â­Â¨Â¥ Â­Â¥ Â­Ã£Â¦Â­Ã«Ã¥ Ã¤Â Â©Â«Â®Â¢
 ) else (
 	echo Unpacking the installer and deleting unnecessary files
 )
@@ -64,7 +64,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo  âç¨¬ ¢­ãâà¥­­¨¥ ä ©«ë ¡à ã§¥à  ¤«ï ®âª«îç¥­¨ï ­ ¢ï§ç¨¢ëå § ¯à®á®¢
+	echo ÂÂ Ã¢Ã§Â¨Â¬ Â¢Â­Ã£Ã¢Ã Â¥Â­Â­Â¨Â¥ Ã¤Â Â©Â«Ã« Â¡Ã Â Ã£Â§Â¥Ã Â  Â¤Â«Ã¯ Â®Ã¢ÂªÂ«Ã®Ã§Â¥Â­Â¨Ã¯ Â­Â Â¢Ã¯Â§Ã§Â¨Â¢Ã«Ã¥ Â§Â Â¯Ã Â®Ã¡Â®Â¢
 ) else (
 	echo Patching browser internal files to disable annoying external requests
 )
@@ -90,7 +90,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ‡ £àã§ª  ï§ëª®¢ëå ¯ ª¥â®¢
+	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Ã¯Â§Ã«ÂªÂ®Â¢Ã«Ã¥ Â¯Â ÂªÂ¥Ã¢Â®Â¢
 ) else (
 	echo Downloading language packs
 )
@@ -105,7 +105,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo ‡ £àã§ª  ¤®¯®«­¥­¨ï NoScript
+	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Â¤Â®Â¯Â®Â«Â­Â¥Â­Â¨Ã¯ NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -114,7 +114,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo Š®¯¨à®¢ ­¨¥ ä ©«®¢ ­ áâà®¥ª ¢ ¯ ¯ªã Firefox
+	echo Å Â®Â¯Â¨Ã Â®Â¢Â Â­Â¨Â¥ Ã¤Â Â©Â«Â®Â¢ Â­Â Ã¡Ã¢Ã Â®Â¥Âª Â¢ Â¯Â Â¯ÂªÃ£ Firefox
 ) else (
 	echo Copying Firefox launcher and settings
 )
@@ -131,7 +131,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ‡ £àã§ª  I2Pd
+	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -144,7 +144,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="ru" (
-	echo I2Pd Browser Portable £®â®¢ ª § ¯ãáªã!
+	echo I2Pd Browser Portable Â£Â®Ã¢Â®Â¢ Âª Â§Â Â¯Ã£Ã¡ÂªÃ£!
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
@@ -166,7 +166,7 @@ goto :eof
 
 :GET_ARCH
 set xOS=win32
-if defined PROCESSOR_ARCHITEW6432 (set xOS=x64) else if "%PROCESSOR_ARCHITECTURE%" neq "x86" (set xOS=win64)
+if defined PROCESSOR_ARCHITEW6432 (set xOS=win64) else if "%PROCESSOR_ARCHITECTURE%" neq "x86" (set xOS=win64)
 goto :eof
 
 :eof
