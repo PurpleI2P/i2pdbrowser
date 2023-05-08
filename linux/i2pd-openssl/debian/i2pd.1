@@ -1,0 +1,130 @@
+.TH "I2PD" "1" "June 20, 2018"
+
+.SH "NAME"
+i2pd \- Full-featured C++ implementation of I2P client.
+.SH "SYNOPSIS"
+.B i2pd
+[\fIOPTION1\fR] [\fIOPTION2\fR]...
+.SH "DESCRIPTION"
+i2pd
+is a C++ implementation of the router for the I2P anonymizing network, offering
+a simple layer that identity-sensitive applications can use to securely
+communicate. All data is wrapped with several layers of encryption, and the
+network is both distributed and dynamic, with no trusted parties.
+.PP
+Any of the configuration options below can be used in the \fBDAEMON_ARGS\fR variable in \fI/etc/default/i2pd\fR.
+.SH "OPTIONS"
+.TP
+\fB\-\-help\fR
+Show available options.
+.TP
+\fB\-\-conf=\fR
+Config file (default: \fI~/.i2pd/i2pd.conf\fR or \fI/var/lib/i2pd/i2pd.conf\fR)
+.BR
+This parameter will be silently ignored if the specified config file does not exist.
+Options specified on the command line take precedence over those in the config file.
+.TP
+\fB\-\-tunconf=\fR
+Tunnels config file (default: \fI~/.i2pd/tunnels.conf\fR or \fI/var/lib/i2pd/tunnels.conf\fR)
+.TP
+\fB\-\-pidfile=\fR
+Where to write pidfile (don\'t write by default)
+.TP
+\fB\-\-log=\fR
+Logs destination: \fIstdout\fR, \fIfile\fR, \fIsyslog\fR (\fIstdout\fR if not set, \fIfile\fR - otherwise, for compatibility)
+.TP
+\fB\-\-logfile=\fR
+Path to logfile (default - autodetect)
+.TP
+\fB\-\-loglevel=\fR
+Log messages above this level (\fIdebug\fR, \fBinfo\fR, \fIwarn\fR, \fIerror\fR, \fInone\fR)
+.TP
+\fB\-\-logclftime\fR
+Log messages with full CLF-formatted date and time (\fIdisabled\fR by default)
+.TP
+\fB\-\-datadir=\fR
+Path to storage of i2pd data (RI, keys, peer profiles, ...)
+.TP
+\fB\-\-tunnelsdir=\fR
+Path to tunnels configuration files (default: \fI~/.i2pd/tunnels.d\fR or \fI/var/lib/i2pd/tunnels.d\fR)
+.TP
+\fB\-\-host=\fR
+The external IP address
+.TP
+\fB\-\-port=\fR
+The port to listen on for incoming connections
+.TP
+\fB\-\-ifname=\fR
+The network interface to bind to
+.TP
+\fB\-\-ifname4=\fR
+The network interface to bind to for IPv4 connections
+.TP
+\fB\-\-ifname6=\fR
+The network interface to bind to for IPv6 connections
+.TP
+\fB\-\-ipv4=\fR
+Enable communication through ipv6 (\fIenabled\fR by default)
+.TP
+\fB\-\-ipv6\fR
+Enable communication through ipv6 (\fIdisabled\fR by default)
+.TP
+\fB\-\-ntcp=\fR
+Enable usage of NTCP transport (\fIenabled\fR by default)
+.TP
+\fB\-\-ntcpproxy=\fR
+Set proxy URL for NTCP transport
+.TP
+\fB\-\-ssu=\fR
+Enable usage of SSU transport (\fIenabled\fR by default)
+.TP
+\fB\-\-notransit\fR
+Router will not accept transit tunnels at startup (\fIdisabled\fR by default)
+.TP
+\fB\-\-floodfill\fR
+Router will be floodfill (\fIdisabled\fR by default)
+.TP
+\fB\-\-bandwidth=\fR
+Bandwidth limit: integer in KBps or letter aliases: \fBL (32KBps)\fR, \fIO (256)\fR, \fIP (2048)\fR, \fIX (>9000)\fR
+.TP
+\fB\-\-share=\fR
+Limit of transit traffic from max bandwidth in percents. (default: 100)
+.TP
+\fB\-\-daemon\fR
+Router will go to background after start (\fIdisabled\fR by default)
+.TP
+\fB\-\-service\fR
+Router will use system folders like \fI/var/lib/i2pd\fR (\fIdisabled\fR by default)
+.TP
+\fB\-\-family=\fR
+Name of a family, router belongs to.
+.PP
+Switches, which enabled by default (like \fB\-\-ssu\fR, \fB\-\-ntcp\fR, etc.), can be disabled in config file.
+.RE
+See service-specific parameters in example config file \fI/usr/share/doc/i2pd/i2pd.conf.gz\fR
+.SH "FILES"
+/etc/i2pd/i2pd.conf, /etc/i2pd/tunnels.conf, /etc/default/i2pd
+.RS 4
+i2pd configuration files (when running as a system service)
+.RE
+.PP
+/var/lib/i2pd/
+.RS 4
+i2pd profile directory (when running as a system service, see \fB\-\-service\fR above)
+.RE
+.PP
+$HOME/.i2pd/
+.RS 4
+i2pd profile directory (when running as a normal user)
+.SH "SEE ALSO"
+Documentation at Read the Docs: \m[blue]\fBhttps://i2pd\&.readthedocs\&.io/en/latest/\fR\m[]
+.SH "AUTHOR"
+This manual page was written by kytv <\m[blue]\fBkillyourtv@i2pmail\&.org\fR\m[]> for the Debian system (but may be used by others).
+.RE
+Updated by hagen <\m[blue]\fBhagen@i2pmail\&.org\fR\m[]> in 2016.
+.RE
+Updated by R4SAS <\m[blue]\fBr4sas@i2pmail\&.org\fR\m[]> in 2018.
+.PP
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or any later version published by the Free Software Foundation.
+.RE
+On Debian systems, the complete text of the GNU General Public License can be found in \fI/usr/share/common-licenses/GPL\fR
