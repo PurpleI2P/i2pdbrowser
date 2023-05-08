@@ -108,13 +108,28 @@ echo "Downloading NoScript extension..."
 curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4002416/noscript-11.4.11.xpi
 
 echo "Adding standard configs..."
+mkdir -p ../browser/.mozilla/firefox/
+echo -ne -n -e "[Profile2]\nName=profile-ru\nIsRelative=1\nPath=profile-ru\n[Profile1]\nName=profile-en\nIsRelative=1\nPath=profile-en\n[Profile0]\nName=profile\nIsRelative=1\nPath=profile\n[General]\nStartWithLastProfile=1\nVersion=2\nName=Profile-ru\nIsRelative=1\nPath=profile-ru" > ../browser/.mozilla/firefox/profiles.ini
 cp -r preferences/* ../browser/
 cp -r profile/* ../browser/data/
+cp -r profile ../browser/.mozilla/firefox/
+cp -r profile-ru/ ../browser/.mozilla/firefox/
+cp -r profile-en/ ../browser/.mozilla/firefox/
 
 if [ "$language" = "ru" ]; then
+	mkdir -p ../browser/.mozilla/firefox/
 	cp -r profile-ru/* ../browser/data/
+	cp -r profile ../browser/.mozilla/firefox/
+	cp -r profile-en/ ../browser/.mozilla/firefox/
+	cp -r profile-ru/ ../browser/.mozilla/firefox/
+	echo -ne -n -e "[Profile2]\nName=profile-ru\nIsRelative=1\nPath=profile-ru\n[Profile1]\nName=profile-en\nIsRelative=1\nPath=profile-en\n[Profile0]\nName=profile\nIsRelative=1\nPath=profile\n[General]\nStartWithLastProfile=1\nVersion=2\nName=Profile-ru\nIsRelative=1\nPath=profile-ru" > ../browser/.mozilla/firefox/profiles.ini
 else
-	cp -r profile-en/* ../browser/data/
+	mkdir ../browser/.mozilla/
+	cp -r profile-en/ ../browser/data/
+	cp -r profile ../browser/.mozilla/firefox/
+	cp -r profile-ru/ ../browser/.mozilla/firefox/
+	cp -r profile-en/ ../browser/.mozilla/firefox/
+	echo -ne -n -e "[Profile2]\nName=profile-ru\nIsRelative=1\nPath=profile-ru\n[Profile1]\nName=profile-en\nIsRelative=1\nPath=profile-en\n[Profile0]\nName=profile\nIsRelative=1\nPath=profile\n[General]\nStartWithLastProfile=1\nVersion=2\nName=Profile-ru\nIsRelative=1\nPath=profile-ru" > ../browser/.mozilla/firefox/profiles.ini
 fi
 
 echo "Copying Desktop launch scripts..."
