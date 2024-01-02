@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2022, The PurpleI2P Project
+# Copyright (c) 2013-2024, The PurpleI2P Project
 # This file is part of Purple I2P project and licensed under BSD3
 # See full license text in LICENSE file at top of project tree
 
@@ -12,8 +12,8 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)' | sed -e 's/_/-/g')
-version="102.3.0esr"
-i2pdversion="2.43.0"
+version="115.6.0esr"
+i2pdversion="2.50.0"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
@@ -103,13 +103,13 @@ sed -i '' -e "s/ServerURL=.*/ServerURL=-/" "../FirefoxESR.app/Contents/Resources
 
 echo "Downloading language packs..."
 mkdir ../FirefoxESR.app/Contents/Resources/browser/extensions
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971589/russian_ru_language_pack-102.0.1buildid20220705.093820.xpi
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3997957/2696307-1.41.xpi
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971625/english_us_language_pack-102.0.1buildid20220705.093820.xpi
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3893473/us_english_dictionary-91.0.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144376/russian_ru_language_pack-115.0.20230726.201356.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4215701/2696307-1.77.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144407/english_us_language_pack-115.0.20230726.201356.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4175230/us_english_dictionary-115.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4002416/noscript-11.4.11.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4206186/noscript-11.4.29.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../FirefoxESR.app/Contents/Resources/

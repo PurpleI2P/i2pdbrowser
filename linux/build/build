@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2013-2022, The PurpleI2P Project
+# Copyright (c) 2013-2024, The PurpleI2P Project
 # This file is part of Purple I2P project and licensed under BSD3
 # See full license text in LICENSE file at top of project tree
 
@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="102.3.0esr"
+version="115.6.0esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -99,13 +99,13 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 
 echo "Downloading language packs..."
 mkdir ../browser/browser/extensions
-curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971589/russian_ru_language_pack-102.0.1buildid20220705.093820.xpi
-curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3997957/2696307-1.41.xpi
-curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3971625/english_us_language_pack-102.0.1buildid20220705.093820.xpi
-curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/3893473/us_english_dictionary-91.0.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144376/russian_ru_language_pack-115.0.20230726.201356.xpi
+curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4215701/2696307-1.77.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144407/english_us_language_pack-115.0.20230726.201356.xpi
+curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4175230/us_english_dictionary-115.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4002416/noscript-11.4.11.xpi
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4206186/noscript-11.4.29.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../browser/
