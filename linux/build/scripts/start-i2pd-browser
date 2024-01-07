@@ -272,18 +272,18 @@ if [ "$show_usage" -eq 1 ]; then
     tbb_usage
 elif [ "$detach" -eq 1 ] ; then
     ./firefox --class "I2Pd Browser" \
-       -profile data "${@}" > "$logfile" 2>&1 </dev/null &
+       -ProfileManager "${@}" > "$logfile" 2>&1 </dev/null &
     disown "$!"
 elif [ "$log_output" -eq 1 -a "$show_output" -eq 1 ]; then
     ./firefox --class "I2Pd Browser" \
-        -profile data "${@}" 2>&1 </dev/null | \
+       -ProfileManager "${@}" 2>&1 </dev/null | \
         tee "$logfile"
 elif [ "$show_output" -eq 1 ]; then
     ./firefox --class "I2Pd Browser" \
-        -profile data "${@}" < /dev/null
+       -ProfileManager "${@}" < /dev/null
 else
     ./firefox --class "I2Pd Browser" \
-        -profile data "${@}" > "$logfile" 2>&1 </dev/null
+       -ProfileManager "${@}" > "$logfile" 2>&1 </dev/null
 fi
 
 exit $?
