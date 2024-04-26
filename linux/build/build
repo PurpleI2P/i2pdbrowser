@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="115.6.0esr"
+version="115.9.1esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 

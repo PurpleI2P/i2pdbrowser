@@ -7,17 +7,17 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=115.6.0esr
-set I2Pdversion=2.50.1
+set FFversion=115.9.1esr
+set I2Pdversion=2.51.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="ru" (
-	echo â€˜Â¡Â®Ã ÂªÂ  I2Pd Browser Portable
-	echo Å¸Â§Ã«Âª Â¡Ã Â Ã£Â§Â¥Ã Â : %locale%, Â Ã Ã¥Â¨Ã¢Â¥ÂªÃ¢Ã£Ã Â : %xOS%
+	echo ‘¡®àª  I2Pd Browser Portable
+	echo Ÿ§ëª ¡à ã§¥à : %locale%,  àå¨â¥ªâãà : %xOS%
 	echo.
-	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Ã£Ã¡Ã¢Â Â­Â®Â¢Ã©Â¨ÂªÂ  Firefox ESR
+	echo ‡ £àã§ª  ãáâ ­®¢é¨ª  Firefox ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo Browser locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="ru" (
-	echo ÂÂ Ã¡Â¯Â ÂªÂ®Â¢ÂªÂ  Ã£Ã¡Ã¢Â Â­Â®Â¢Ã©Â¨ÂªÂ  Â¨ Ã£Â¤Â Â«Â¥Â­Â¨Â¥ Â­Â¥ Â­Ã£Â¦Â­Ã«Ã¥ Ã¤Â Â©Â«Â®Â¢
+	echo  á¯ ª®¢ª  ãáâ ­®¢é¨ª  ¨ ã¤ «¥­¨¥ ­¥ ­ã¦­ëå ä ©«®¢
 ) else (
 	echo Unpacking the installer and deleting unnecessary files
 )
@@ -63,7 +63,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ÂÂ Ã¢Ã§Â¨Â¬ Â¢Â­Ã£Ã¢Ã Â¥Â­Â­Â¨Â¥ Ã¤Â Â©Â«Ã« Â¡Ã Â Ã£Â§Â¥Ã Â  Â¤Â«Ã¯ Â®Ã¢ÂªÂ«Ã®Ã§Â¥Â­Â¨Ã¯ Â­Â Â¢Ã¯Â§Ã§Â¨Â¢Ã«Ã¥ Â§Â Â¯Ã Â®Ã¡Â®Â¢
+	echo  âç¨¬ ¢­ãâà¥­­¨¥ ä ©«ë ¡à ã§¥à  ¤«ï ®âª«îç¥­¨ï ­ ¢ï§ç¨¢ëå § ¯à®á®¢
 ) else (
 	echo Patching browser internal files to disable annoying external requests
 )
@@ -89,7 +89,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Ã¯Â§Ã«ÂªÂ®Â¢Ã«Ã¥ Â¯Â ÂªÂ¥Ã¢Â®Â¢
+	echo ‡ £àã§ª  ï§ëª®¢ëå ¯ ª¥â®¢
 ) else (
 	echo Downloading language packs
 )
@@ -104,7 +104,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  Â¤Â®Â¯Â®Â«Â­Â¥Â­Â¨Ã¯ NoScript
+	echo ‡ £àã§ª  ¤®¯®«­¥­¨ï NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -113,7 +113,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo Å Â®Â¯Â¨Ã Â®Â¢Â Â­Â¨Â¥ Ã¤Â Â©Â«Â®Â¢ Â­Â Ã¡Ã¢Ã Â®Â¥Âª Â¢ Â¯Â Â¯ÂªÃ£ Firefox
+	echo Š®¯¨à®¢ ­¨¥ ä ©«®¢ ­ áâà®¥ª ¢ ¯ ¯ªã Firefox
 ) else (
 	echo Copying Firefox launcher and settings
 )
@@ -130,7 +130,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo â€¡Â Â£Ã Ã£Â§ÂªÂ  I2Pd
+	echo ‡ £àã§ª  I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -143,7 +143,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="ru" (
-	echo I2Pd Browser Portable Â£Â®Ã¢Â®Â¢ Âª Â§Â Â¯Ã£Ã¡ÂªÃ£!
+	echo I2Pd Browser Portable £®â®¢ ª § ¯ãáªã!
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
