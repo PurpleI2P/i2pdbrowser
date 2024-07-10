@@ -14,10 +14,10 @@ call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="ru" (
-	echo ЭЭЭ? I2Pd Browser Portable
-	echo ЭЭЭ ЭЭ?Э: %locale%, ЭЭЭ?ЭЭЭ: %xOS%
+	echo Сборка I2Pd Browser Portable
+	echo Язык браузера: %locale%, архитектура: %xOS%
 	echo.
-	echo ЭЭЭЭ?Э ЭЭ?ЭЭ?Э Firefox ESR
+	echo Загрузка установщика Firefox ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo Browser locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭ?ЭЭЭЭЭ ЭЭ?ЭЭ?Э Э ?ЭЭЭЭЭ ЭЭ Э?ЭЭ ?ЭЭЭ
+	echo Распаковка установщика и удаление не нужных файлов
 ) else (
 	echo Unpacking the installer and deleting unnecessary files
 )
@@ -63,7 +63,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭЭ? ЭЭЭЭ?ЭЭЭ ?ЭЭ ЭЭ?Э ЭЭЭ Э?Э?ЭЭ ЭЭЭЭ?ЭЭ ЭЭЭЭ?
+	echo Патчим внутренние файлы браузера для отключения навязчивых запросов
 ) else (
 	echo Patching browser internal files to disable annoying external requests
 )
@@ -89,7 +89,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭЭЭ?Э Э?ЭЭЭ ЭЭЭЭ?
+	echo Загрузка языковых пакетов
 ) else (
 	echo Downloading language packs
 )
@@ -104,7 +104,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭЭЭ?Э ЭЭЭЭЭЭЭЭЭЭ NoScript
+	echo Загрузка дополнения NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -113,7 +113,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭЭЭ?ЭЭЭЭ ?ЭЭЭ ЭЭЭЭ?Э Э ЭЭЭЭЭ Firefox
+	echo Копирование файлов настроек в папку Firefox
 ) else (
 	echo Copying Firefox launcher and settings
 )
@@ -130,7 +130,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo ЭЭЭЭ?Э I2Pd
+	echo Загрузка I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -143,7 +143,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="ru" (
-	echo I2Pd Browser Portable ЭЭ? Э ЭЭЭЭЭЭ!
+	echo I2Pd Browser Portable готов к запуску!
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
