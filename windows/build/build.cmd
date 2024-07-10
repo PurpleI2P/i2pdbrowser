@@ -7,17 +7,17 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=115.9.1esr
-set I2Pdversion=2.51.0
+set FFversion=115.13.0esr
+set I2Pdversion=2.52.0
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
 
 if "%locale%"=="ru" (
-	echo Сборка I2Pd Browser Portable
-	echo Язык браузера: %locale%, архитектура: %xOS%
+	echo ЭЭЭ? I2Pd Browser Portable
+	echo ЭЭЭ ЭЭ?Э: %locale%, ЭЭЭ?ЭЭЭ: %xOS%
 	echo.
-	echo Загрузка установщика Firefox ESR
+	echo ЭЭЭЭ?Э ЭЭ?ЭЭ?Э Firefox ESR
 ) else (
 	echo Building I2Pd Browser Portable
 	echo Browser locale: %locale%, architecture: %xOS%
@@ -34,7 +34,7 @@ if errorlevel 1 (
 
 echo.
 if "%locale%"=="ru" (
-	echo Распаковка установщика и удаление не нужных файлов
+	echo ЭЭ?ЭЭЭЭЭ ЭЭ?ЭЭ?Э Э ?ЭЭЭЭЭ ЭЭ Э?ЭЭ ?ЭЭЭ
 ) else (
 	echo Unpacking the installer and deleting unnecessary files
 )
@@ -63,7 +63,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo Патчим внутренние файлы браузера для отключения навязчивых запросов
+	echo ЭЭЭ? ЭЭЭЭ?ЭЭЭ ?ЭЭ ЭЭ?Э ЭЭЭ Э?Э?ЭЭ ЭЭЭЭ?ЭЭ ЭЭЭЭ?
 ) else (
 	echo Patching browser internal files to disable annoying external requests
 )
@@ -89,7 +89,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo Загрузка языковых пакетов
+	echo ЭЭЭЭ?Э Э?ЭЭЭ ЭЭЭЭ?
 ) else (
 	echo Downloading language packs
 )
@@ -104,7 +104,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo Загрузка дополнения NoScript
+	echo ЭЭЭЭ?Э ЭЭЭЭЭЭЭЭЭЭ NoScript
 ) else (
 	echo Downloading NoScript extension
 )
@@ -113,7 +113,7 @@ if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
 if "%locale%"=="ru" (
-	echo Копирование файлов настроек в папку Firefox
+	echo ЭЭЭЭ?ЭЭЭЭ ?ЭЭЭ ЭЭЭЭ?Э Э ЭЭЭЭЭ Firefox
 ) else (
 	echo Copying Firefox launcher and settings
 )
@@ -130,7 +130,7 @@ echo OK!
 
 echo.
 if "%locale%"=="ru" (
-	echo Загрузка I2Pd
+	echo ЭЭЭЭ?Э I2Pd
 ) else (
 	echo Downloading I2Pd
 )
@@ -143,7 +143,7 @@ xcopy /E /I /Y i2pd ..\i2pd > nul
 
 echo.
 if "%locale%"=="ru" (
-	echo I2Pd Browser Portable готов к запуску!
+	echo I2Pd Browser Portable ЭЭ? Э ЭЭЭЭЭЭ!
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
