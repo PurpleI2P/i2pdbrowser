@@ -92,7 +92,7 @@ if test -r /proc/cpuinfo && ! grep -q '^flags\s*:.* sse2' /proc/cpuinfo; then
         exit 1
 fi
 
-tbb_usage () {
+browser_usage () {
     printf "\nI2Pd Browser Script Options\n"
     printf "  --verbose         Display Firefox output in the terminal\n"
     printf "  --log [file]      Record Firefox output in file (default: i2pd-browser.log)\n"
@@ -269,7 +269,7 @@ if [ "$show_usage" -eq 1 ]; then
     # Display Firefox help, then our help
     ./firefox --class "I2Pd Browser" \
         -profile data --help 2>/dev/null
-    tbb_usage
+    browser_usage
 elif [ "$detach" -eq 1 ] ; then
     ./firefox --class "I2Pd Browser" \
        -profile data "${@}" > "$logfile" 2>&1 </dev/null &
