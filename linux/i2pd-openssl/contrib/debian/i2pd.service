@@ -1,0 +1,37 @@
+[Unit]
+Description=I2P Router written in C++
+Documentation=man:i2pd(1) https://i2pd.readthedocs.io/en/latest/
+After=network.target
+
+[Service]
+User=i2pd
+Group=i2pd
+RuntimeDirectory=i2pd
+RuntimeDirectoryMode=0700
+LogsDirectory=i2pd
+LogsDirectoryMode=0700
+Type=forking
+ExecStart=/usr/sbin/i2pd --conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.conf --tunnelsdir=/etc/i2pd/tunnels.conf.d --pidfile=/run/i2pd/i2pd.pid --logfile=/var/log/i2pd/i2pd.log --daemon --service
+ExecReload=/bin/sh -c "kill -HUP $MAINPID"
+PIDFile=/run/i2pd/i2pd.pid
+### Uncomment, if auto restart needed
+#Restart=on-failure
+
+# Use SIGTERM to stop i2pd immediately.
+# Some cleanup processes can delay stopping, so we set 30 seconds timeout and then SIGKILL i2pd.
+KillSignal=SIGTERM
+TimeoutStopSec=30s
+SendSIGKILL=yes
+
+# If you have the patience waiting 10 min on restarting/stopping it, uncomment this.
+# i2pd stops accepting new tunnels and waits ~10 min while old ones do not die.
+#KillSignal=SIGINT
+#TimeoutStopSec=10m
+
+# If you have problems with hanging i2pd, you can try increase this
+LimitNOFILE=8192
+# To enable write of coredump uncomment this
+#LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target
