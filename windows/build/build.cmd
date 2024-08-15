@@ -34,44 +34,8 @@ echo Unpacking the installer and deleting unnecessary files
 del /Q firefox.exe
 ren ..\Firefox\App\core Firefox
 del /Q ..\Firefox\App\setup.exe
-del /Q ..\Firefox\App\Firefox\browser\crashreporter-override.ini
-rmdir /S /Q ..\Firefox\App\Firefox\browser\features
-rmdir /S /Q ..\Firefox\App\Firefox\gmp-clearkey
-rmdir /S /Q ..\Firefox\App\Firefox\uninstall
-del /Q ..\Firefox\App\Firefox\Accessible*.*
-del /Q ..\Firefox\App\Firefox\application.ini
-del /Q ..\Firefox\App\Firefox\crashreporter.*
-del /Q ..\Firefox\App\Firefox\*.sig
-del /Q ..\Firefox\App\Firefox\maintenanceservice*.*
-del /Q ..\Firefox\App\Firefox\minidump-analyzer.exe
-del /Q ..\Firefox\App\Firefox\precomplete
-del /Q ..\Firefox\App\Firefox\removed-files
-del /Q ..\Firefox\App\Firefox\ucrtbase.dll
-del /Q ..\Firefox\App\Firefox\update*.*
 
 mkdir ..\Firefox\App\Firefox\browser\extensions > nul
-echo OK!
-
-echo.
-echo Patching browser internal files to disable annoying external requests
-
-7z -bso0 -y x ..\Firefox\App\Firefox\omni.ja -o..\Firefox\App\tmp > nul 2>&1
-
-REM Patching them
-sed -i "s/https\:\/\/firefox\.settings\.services\.mozilla\.com\/v1/http\:\/\/127\.0\.0\.1/" ..\Firefox\App\tmp\modules\SearchUtils.sys.mjs
-if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 1/2)
-sed -i "s/\"https\:\/\/firefox\.settings\.services\.mozilla\.com\/v1\",$/\"\",/" ..\Firefox\App\tmp\modules\AppConstants.sys.mjs
-if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo Patched 2/2)
-
-REM Backing up old omni.ja
-ren ..\Firefox\App\Firefox\omni.ja omni.ja.bak
-
-REM Repacking patched files
-7z a -mx0 -tzip ..\Firefox\App\Firefox\omni.ja -r ..\Firefox\App\tmp\* > nul
-
-REM Removing temporary files
-rmdir /S /Q ..\Firefox\App\tmp
-del ..\Firefox\App\Firefox\omni.ja.bak
 echo OK!
 
 echo.

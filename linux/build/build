@@ -78,21 +78,6 @@ rm $file
 mv $application ../browser
 mkdir ../browser/data
 
-# Deleting some not needed files
-rm ../browser/crashreporter*
-rm ../browser/minidump-analyzer
-rm ../browser/pingsender
-rm ../browser/precomplete
-rm ../browser/removed-files
-rm ../browser/update*
-rm ../browser/Throbber-small.gif
-rm ../browser/browser/crashreporter-override.ini
-rm ../browser/browser/features/formautofill@mozilla.org.xpi
-rm ../browser/browser/features/screenshots@mozilla.org.xpi
-rm -r ../browser/icons
-# And edit some places
-sed -i 's/Enabled=1/Enabled=0/g' ../browser/application.ini
-sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 # Done!
 
 echo "Downloading language packs..."
@@ -109,8 +94,8 @@ cp -r profile/* ../browser/data/
 cp -r profile-en/* ../browser/data/
 
 
-echo "Copying Desktop launch scripts..."
-cp -r scripts/* ../browser/
-cp scripts/start-i2pd-browser.desktop ../
+#echo "Copying Desktop launch scripts..."
+#cp -r scripts/* ../browser/
+#cp scripts/start-i2pd-browser.desktop ../
 
 echo ... finished
