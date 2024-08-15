@@ -12,7 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-version="115.14.0esr"
+version="128.1.0esr"
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -27,9 +27,7 @@ if [ -z $curlfind ]; then
 fi
 
 # We support only English (US) and Russian
-if [ "$language" != "ru" ]; then
-	language="en-US"
-fi
+language="en-US"
 
 echo "This script is preparing $application $version for use with I2Pd"
 
@@ -99,23 +97,17 @@ sed -i 's/ServerURL=.*/ServerURL=-/' ../browser/application.ini
 
 echo "Downloading language packs..."
 mkdir ../browser/browser/extensions
-curl -L -f -# -o ../browser/browser/extensions/langpack-ru@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144376/russian_ru_language_pack-115.0.20230726.201356.xpi
-curl -L -f -# -o ../browser/browser/extensions/ruspell-wiktionary@addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4215701/2696307-1.77.xpi
-curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4144407/english_us_language_pack-115.0.20230726.201356.xpi
+curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4326091/english_us_language_pack-128.0.20240725.162350.xpi
 curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4175230/us_english_dictionary-115.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4320635/noscript-11.4.31.xpi
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4333280/noscript-11.4.34.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../browser/
 cp -r profile/* ../browser/data/
+cp -r profile-en/* ../browser/data/
 
-if [ "$language" = "ru" ]; then
-	cp -r profile-ru/* ../browser/data/
-else
-	cp -r profile-en/* ../browser/data/
-fi
 
 echo "Copying Desktop launch scripts..."
 cp -r scripts/* ../browser/
