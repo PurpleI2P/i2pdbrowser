@@ -10,7 +10,6 @@ set CURL=%~dp0curl.exe
 set FFversion=128.1.0esr
 set I2Pdversion=2.53.1
 set locale=en-US
-call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
 
