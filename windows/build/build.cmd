@@ -30,7 +30,7 @@ echo.
 echo Unpacking the installer and deleting unnecessary files
 
 
-7z x -y -o..\Firefox\App firefox.exe > nul
+7za x -y -o..\Firefox\App firefox.exe > nul
 del /Q firefox.exe
 ren ..\Firefox\App\core Firefox
 del /Q ..\Firefox\App\setup.exe
@@ -67,7 +67,7 @@ echo Downloading I2Pd
 
 "%CURL%" -L -f -# -O https://github.com/PurpleI2P/i2pd/releases/download/%I2Pdversion%/i2pd_%I2Pdversion%_%xOS%_mingw.zip
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
-7z x -y -o..\i2pd i2pd_%I2Pdversion%_%xOS%_mingw.zip i2pd.exe > nul
+7za x -y -o..\i2pd i2pd_%I2Pdversion%_%xOS%_mingw.zip i2pd.exe > nul
 del /Q i2pd_%I2Pdversion%_%xOS%_mingw.zip
 
 xcopy /E /I /Y i2pd ..\i2pd > nul
