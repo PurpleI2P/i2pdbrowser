@@ -7,7 +7,7 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=115.14.0esr
+set FFversion=115.15.0esr
 set I2Pdversion=2.53.1
 call :GET_LOCALE
 call :GET_PROXY
@@ -108,7 +108,7 @@ if "%locale%"=="ru" (
 ) else (
 	echo Downloading NoScript extension
 )
-"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4320635/noscript-11.4.31.xpi
+"%CURL%" -L -f -# -o ..\Firefox\App\Firefox\browser\extensions\{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4343311/noscript-11.4.35.xpi
 if errorlevel 1 ( echo ERROR:%ErrorLevel% && pause && exit ) else (echo OK!)
 
 echo.
