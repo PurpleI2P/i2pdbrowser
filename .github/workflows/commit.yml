@@ -1,4 +1,4 @@
-name: Pre-release
+name: Trunk release
 
 on:
   push:
@@ -63,8 +63,8 @@ jobs:
         name: i2pdbrowser-${{ steps.commit.outputs.short }}-windows
         path: I2PdBrowserPortable_*-windows.zip
 
-  pre-release:
-    name: Publish pre-release
+  publish:
+    name: Publish trunk release
     runs-on: ubuntu-latest
     needs:
     - pack-nix
@@ -81,12 +81,12 @@ jobs:
         pattern: i2pdbrowser-${{ steps.commit.outputs.short }}-*
         merge-multiple: true
 
-    - name: Creating pre-release
+    - name: Creating release
       uses: marvinpinto/action-automatic-releases@latest
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
-        prerelease: true
+        prerelease: false
         title: "Latest packages"
         files: |
           I2PdBrowserPortable_${{ steps.commit.outputs.short }}-*
