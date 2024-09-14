@@ -80,6 +80,9 @@ jobs:
       with:
         pattern: i2pdbrowser-${{ steps.commit.outputs.short }}-*
 
+    - name: Display structure of downloaded files
+      run: ls -R
+
     - name: Creating pre-release
       uses: marvinpinto/action-automatic-releases@latest
       with:
