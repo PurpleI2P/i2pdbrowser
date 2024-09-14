@@ -81,6 +81,9 @@ jobs:
         pattern: i2pdbrowser-${{ steps.commit.outputs.short }}-*
         merge-multiple: true
 
+    - name: Create hashsums
+      run: sha512sum I2PdBrowserPortable_${{ steps.commit.outputs.short }}-* > SHA512SUMS
+
     - name: Creating release
       uses: marvinpinto/action-automatic-releases@latest
       with:
@@ -90,3 +93,4 @@ jobs:
         title: "Latest packages"
         files: |
           I2PdBrowserPortable_${{ steps.commit.outputs.short }}-*
+          SHA512SUMS
