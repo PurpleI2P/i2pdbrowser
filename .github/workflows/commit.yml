@@ -79,9 +79,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         pattern: i2pdbrowser-${{ steps.commit.outputs.short }}-*
-
-    - name: Extract artifacts
-      run: unzip i2pdbrowser-${{ steps.commit.outputs.short }}-*
+        merge-multiple: true
 
     - name: Creating pre-release
       uses: marvinpinto/action-automatic-releases@latest
