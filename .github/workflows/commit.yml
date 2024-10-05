@@ -1,0 +1,96 @@
+name: Trunk release
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  pack-nix:
+    name: Unix
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Commit Hash
+      id: commit
+      uses: prompt/actions-commit-hash@v3.0.0
+
+    - name: Packing Linux
+      run: |
+        cd linux
+        tar -czf ../I2PdBrowserPortable_${{ steps.commit.outputs.short }}-linux.tar.gz *
+
+    - name: Packing MacOS
+      run: |
+        cd macos
+        tar -czf ../I2PdBrowserPortable_${{ steps.commit.outputs.short }}-macos.tar.gz *
+
+    - name: Upload Linux archive
+      uses: actions/upload-artifact@v4
+      with:
+        name: i2pdbrowser-${{ steps.commit.outputs.short }}-linux
+        path: I2PdBrowserPortable_*-linux.tar.gz
+
+    - name: Upload MacOS archive
+      uses: actions/upload-artifact@v4
+      with:
+        name: i2pdbrowser-${{ steps.commit.outputs.short }}-macos
+        path: I2PdBrowserPortable_*-macos.tar.gz
+
+  pack-win:
+    name: Windows
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Commit Hash
+      id: commit
+      uses: prompt/actions-commit-hash@v3.0.0
+
+    - name: Packaging Windows
+      run: |
+        cd windows
+        7z.exe a -tzip -mx=6 -- ..\I2PdBrowserPortable_${{ steps.commit.outputs.short }}-windows.zip *
+
+    - name: Upload Windows archive
+      uses: actions/upload-artifact@v4
+      with:
+        name: i2pdbrowser-${{ steps.commit.outputs.short }}-windows
+        path: I2PdBrowserPortable_*-windows.zip
+
+  publish:
+    name: Publish trunk release
+    runs-on: ubuntu-latest
+    needs:
+    - pack-nix
+    - pack-win
+
+    steps:
+    - name: Commit Hash
+      id: commit
+      uses: prompt/actions-commit-hash@v3.0.0
+
+    - name: Downloading artifacts
+      uses: actions/download-artifact@v4
+      with:
+        pattern: i2pdbrowser-${{ steps.commit.outputs.short }}-*
+        merge-multiple: true
+
+    - name: Create hashsums
+      run: sha512sum I2PdBrowserPortable_${{ steps.commit.outputs.short }}-* > SHA512SUMS
+
+    - name: Creating release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
+        title: "Latest packages"
+        files: |
+          I2PdBrowserPortable_${{ steps.commit.outputs.short }}-*
+          SHA512SUMS
