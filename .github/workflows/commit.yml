@@ -23,22 +23,11 @@ jobs:
         cd linux
         tar -czf ../I2PdBrowserPortable_${{ steps.commit.outputs.short }}-linux.tar.gz *
 
-    - name: Packing MacOS
-      run: |
-        cd macos
-        tar -czf ../I2PdBrowserPortable_${{ steps.commit.outputs.short }}-macos.tar.gz *
-
     - name: Upload Linux archive
       uses: actions/upload-artifact@v4
       with:
         name: i2pdbrowser-${{ steps.commit.outputs.short }}-linux
         path: I2PdBrowserPortable_*-linux.tar.gz
-
-    - name: Upload MacOS archive
-      uses: actions/upload-artifact@v4
-      with:
-        name: i2pdbrowser-${{ steps.commit.outputs.short }}-macos
-        path: I2PdBrowserPortable_*-macos.tar.gz
 
   pack-win:
     name: Windows
