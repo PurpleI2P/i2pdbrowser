@@ -12,11 +12,7 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
-<<<<<<< HEAD
 version="115.16.1esr"
-=======
-version="115.15.0esr"
->>>>>>> e905b9241aae7c7d2311f979a62385854f9b164a
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
