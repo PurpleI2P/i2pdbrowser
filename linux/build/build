@@ -12,7 +12,11 @@ cd $dir
 
 arch=$(uname -m)
 language=$(echo $LANG | cut -c-5 | sed s/_/-/g)
+<<<<<<< HEAD
 version="115.16.1esr"
+=======
+version="115.15.0esr"
+>>>>>>> e905b9241aae7c7d2311f979a62385854f9b164a
 application="firefox"
 ftpmirror="https://ftp.mozilla.org/pub/$application/releases/$version"
 
@@ -105,7 +109,11 @@ curl -L -f -# -o ../browser/browser/extensions/langpack-en-US@firefox.mozilla.or
 curl -L -f -# -o ../browser/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4175230/us_english_dictionary-115.0.xpi
 
 echo "Downloading NoScript extension..."
+<<<<<<< HEAD
 curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4363712/noscript-11.4.42.xpi
+=======
+curl -L -f -# -o ../browser/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4343311/noscript-11.4.35.xpi
+>>>>>>> e905b9241aae7c7d2311f979a62385854f9b164a
 
 echo "Adding standard configs..."
 cp -r preferences/* ../browser/
