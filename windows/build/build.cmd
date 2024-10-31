@@ -7,7 +7,7 @@ REM See full license text in LICENSE file at top of project tree
 setlocal enableextensions
 
 set CURL=%~dp0curl.exe
-set FFversion=115.16.1esr
+set FFversion=115.17.0esr
 set I2Pdversion=2.54.0
 call :GET_LOCALE
 call :GET_PROXY
