@@ -12,8 +12,8 @@ cd $dir
 
 arch=$(uname -m)
 language=$(osascript -e 'user locale of (get system info)' | sed -e 's/_/-/g')
-version="115.17.0esr"
-i2pdversion="2.54.0"
+version="115.19.0esr"
+i2pdversion="2.55.0"
 
 ftpmirror="https://ftp.mozilla.org/pub/firefox/releases/${version}"
 
@@ -109,7 +109,7 @@ curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/langpac
 curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/en-US@dictionaries.addons.mozilla.org.xpi https://addons.mozilla.org/firefox/downloads/file/4175230/us_english_dictionary-115.0.xpi
 
 echo "Downloading NoScript extension..."
-curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4377088/noscript-11.5.0.xpi
+curl -L -f -# -o ../FirefoxESR.app/Contents/Resources/browser/extensions/{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi https://addons.mozilla.org/firefox/downloads/file/4411102/noscript-12.1.1.xpi
 
 echo "Adding standard configs..."
 cp -r preferences/* ../FirefoxESR.app/Contents/Resources/
