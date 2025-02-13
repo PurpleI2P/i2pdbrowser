@@ -87,10 +87,10 @@
       "UseProxyForDNS": true
     },
     "SearchBar": "unified",
-		"SearchEngines": {
-			"Default": "YaCy 'legwork'",
-			"Remove": ["Google"]
-		},
+    "SearchEngines": {
+      "Default": "YaCy 'legwork'",
+      "Remove": ["Google"]
+    },
     "SearchSuggestEnabled": false,
     "SupportMenu": {
       "Title": "Ilita IRC",
