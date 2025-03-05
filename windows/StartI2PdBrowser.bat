@@ -12,7 +12,7 @@ set fire=firefox.exe
 set port=FirefoxPortable.exe
 set i2pd=i2pd.exe
 
-if not exist Firefox ( echo Firefox not found... Start building... && cd build && call build.cmd )
+if not exist Firefox ( echo Firefox not found... Start building... && pushd build && call build.cmd --skipwait & popd )
 
 taskList|find /i "%port%">nul&&(taskkill /im "%port%" /t>nul)&&(%$pause% 2 >nul)
 REM taskList|find /i "%fire%">nul&&(taskkill /im "%fire%" >nul)

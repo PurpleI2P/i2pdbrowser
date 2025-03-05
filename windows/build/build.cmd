@@ -1,6 +1,6 @@
 @echo off
 
-REM Copyright (c) 2013-2024, The PurpleI2P Project
+REM Copyright (c) 2013-2025, The PurpleI2P Project
 REM This file is part of Purple i2pd project and licensed under BSD3
 REM See full license text in LICENSE file at top of project tree
 
@@ -9,6 +9,7 @@ setlocal enableextensions
 set CURL=%~dp0curl.exe
 set FFversion=115.20.0esr
 set I2Pdversion=2.56.0
+call :GET_ARGS %*
 call :GET_LOCALE
 call :GET_PROXY
 call :GET_ARCH
@@ -147,8 +148,8 @@ if "%locale%"=="ru" (
 ) else (
 	echo I2Pd Browser Portable is ready to start!
 )
-pause
-exit
+if not defined arg_skipwait pause
+exit /b
 
 :GET_LOCALE
 for /f "tokens=3" %%a in ('reg query "HKEY_USERS\.DEFAULT\Keyboard Layout\Preload"^|find "REG_SZ"') do (
@@ -166,6 +167,13 @@ goto :eof
 :GET_ARCH
 set xOS=win32
 if defined PROCESSOR_ARCHITEW6432 (set xOS=win64) else if "%PROCESSOR_ARCHITECTURE%" neq "x86" (set xOS=win64)
+goto :eof
+
+:GET_ARGS
+set arg_skipwait=
+for %%a in (%*) do (
+	if "%%a"=="--skipwait" set arg_skipwait=yes
+)
 goto :eof
 
 :eof
